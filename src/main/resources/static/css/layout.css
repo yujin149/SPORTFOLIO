@@ -1,0 +1,4 @@
+/*input*/
+input[type="text"], input[type="email"]{border:1px solid var(--gray-color); border-radius: 5px; outline: none; height:45px; padding:0 10px; }
+select{border:1px solid var(--gray-color); border-radius: 5px; outline: none;cursor: pointer; height:45px; padding:0 10px;}
+textarea{border:1px solid var(--gray-color); border-radius: 5px; outline: none; padding:10px; resize: none;}

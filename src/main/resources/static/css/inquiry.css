@@ -1,0 +1,29 @@
+.inquiryWrap{margin:calc(66px + 2.5rem) auto 2.5rem;}
+
+.inquiryBox{margin-top:10px;}
+.writeTable{border-top:1px solid var(--main-color);}
+.writeTable li{display: flex; justify-content: flex-start; align-items: center; width: 100%; border-bottom:1px solid var(--gray-color); padding:15px; min-height:60px;}
+.writeTable li .tit{color:var(--bk-color); font-weight:600; width:160px;}
+.writeTable li .tit .star{display:inline-block;color:var(--main-color); font-weight:600; font-size:0.875rem; margin-top:-2px; vertical-align: top;}
+.writeTable li input{width:calc(100% - 160px);}
+.writeTable li .email{display: flex; justify-content:flex-start; align-items: center; width: calc(100% - 160px);}
+.writeTable li .email span{margin: 0 10px;}
+.writeTable li .email input, .writeTable li .email select{width:20%;}
+.writeTable li .email input:disabled{background:var(--bg-color);}
+.writeTable li .email select{margin-left:10px;}
+.writeTable li .phone{display: flex; justify-content:flex-start; align-items: center; width: calc(100% - 160px);}
+.writeTable li .phone{display: flex; justify-content:flex-start; align-items: center; width: calc(100% - 160px);}
+.writeTable li .phone span{margin:0 10px;}
+.writeTable li .phone select, .writeTable li .phone input{width:120px;}
+.writeTable li textarea{width:calc(100% - 160px); height:120px;}
+
+.inquiryWrap .agreeChk{margin-top:2.5rem;}
+.inquiryWrap .agreeChk .tit{color:var(--bk-color); font-weight:600;}
+.inquiryWrap .agreeChk .txt{color:var(--small-color); margin-top:10px; font-size:0.875rem; line-height: 1.4;}
+
+.inquiryWrap .agreeChk .check{display: flex; justify-content: flex-start; align-items: center; cursor: pointer; padding-top:10px;}
+.inquiryWrap .agreeChk .check input{border:1px solid var(--gray-color); margin-right:6px;}
+.inquiryWrap .agreeChk .check p{color:var(--bk-color);font-weight:600; font-size: 0.875rem;}
+
+.inquiryWrap .btnWrap{display: flex; justify-content: flex-end; align-items: center; margin-top:2.5rem;}
+.inquiryWrap .btnWrap button{display: flex;justify-content: center; align-items: center; border-radius: 10px; height:50px; font-weight:600; color:var(--white-color); background:var(--main-color); width:220px; cursor: pointer; border:none;}
