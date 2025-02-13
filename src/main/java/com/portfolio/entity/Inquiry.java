@@ -4,9 +4,6 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import org.springframework.data.annotation.CreatedDate;
-
-import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "inquiry")
@@ -36,8 +33,6 @@ public class Inquiry extends BaseEntity{
 
     @Column(name = "inquiry_content", nullable = false)
     private String content; // 문의 내용
-
-
 
 }
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html
+<html xmlns:th="http://www.thymeleaf.org"
     layout:decorate="~{layouts/layout}"
     xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <body>
@@ -8,55 +8,75 @@
         <div class="subTitleWrap">
             <p class="title">문의하기</p>
         </div>
-        <form action="/inquiry" method="post">
+        <form action="/inquiry" method="post" th:object="${inquiryDto}">
             <ul class="inquiryBox writeTable">
                <li class="wp50">
                    <p class="tit">회사명 <span class="star">*</span></p>
-                   <input type="text" name="company">
+                   <div class="textBox">
+                       <input type="text" th:field="*{company}">
+                       <p class="error" th:errors="*{company}">회사명을 입력해주세요.</p>
+                   </div>
                </li>
                 <li class="wp50">
                     <p class="tit">담당자명 <span class="star">*</span></p>
-                    <input type="text" name="name">
+                    <div class="textBox">
+                        <input type="text" th:field="*{name}">
+                        <p class="error" th:errors="*{name}">담당자명을 입력해주세요.</p>
+                    </div>
                 </li>
                 <li>
                     <p class="tit">이메일 <span class="star">*</span></p>
-                    <div class="email">
-                        <input type="text" name="email01">
-                        <span>@</span>
-                        <input type="text" name="email02">
-                        <select name="emailDomain" onchange="setEmailDomain(this.value)">
-                            <option value="직접입력">직접입력</option>
-                            <option value="hanmail.net">hanmail.net</option>
-                            <option value="naver.com">naver.com</option>
-                            <option value="nate.com">nate.com</option>
-                            <option value="gmail.com">gmail.com</option>
-                        </select>
+                    <div class="textBox">
+                        <div class="email">
+                            <input type="text" name="email01">
+                            <span>@</span>
+                            <input type="text" name="email02">
+                            <select name="emailDomain">
+                                <option value="직접입력">직접입력</option>
+                                <option value="hanmail.net">hanmail.net</option>
+                                <option value="naver.com">naver.com</option>
+                                <option value="nate.com">nate.com</option>
+                                <option value="gmail.com">gmail.com</option>
+                            </select>
+                            <!-- 숨겨진 이메일 도메인 필드 추가 -->
+                            <input type="hidden" name="hiddenEmailDomain" id="hiddenEmailDomain">
+                        </div>
+                        <p class="error" th:errors="*{email}">연락 받으실 이메일을 입력해주세요.</p>
                     </div>
                 </li>
                 <li>
                     <p class="tit">연락처 <span class="star">*</span></p>
-                    <div class="phone">
-                        <select id="phone1" name="phone1">
-                            <option value="010">010</option>
-                            <option value="011">011</option>
-                            <option value="016">016</option>
-                            <option value="017">017</option>
-                            <option value="018">018</option>
-                            <option value="019">019</option>
-                        </select>
-                        <span>-</span>
-                        <input type="text" id="phone2" name="phone2" maxlength="4">
-                        <span>-</span>
-                        <input type="text" id="phone3" name="phone3" maxlength="4">
+                    <div class="textBox">
+                        <div class="phone">
+                            <select id="phone1" name="phone1">
+                                <option value="010">010</option>
+                                <option value="011">011</option>
+                                <option value="016">016</option>
+                                <option value="017">017</option>
+                                <option value="018">018</option>
+                                <option value="019">019</option>
+                            </select>
+                            <span>-</span>
+                            <input type="text" id="phone2" name="phone2" maxlength="4">
+                            <span>-</span>
+                            <input type="text" id="phone3" name="phone3" maxlength="4">
+                        </div>
+                        <p class="error" th:errors="*{phone}">연락 받으실 번호를 입력해주세요.</p>
                     </div>
                 </li>
                 <li>
                     <p class="tit">제목 <span class="star">*</span></p>
-                    <input type="text" name="title" id="title" placeholder="제목을 입력해주세요.">
+                    <div class="textBox">
+                        <input type="text" th:field="*{title}" placeholder="제목을 입력해주세요.">
+                        <p class="error" th:errors="*{title}">제목은 필수 입력 값입니다.</p>
+                    </div>
                 </li>
                 <li>
                     <p class="tit">문의 내용 <span class="star">*</span></p>
-                    <textarea name="content" id="content" placeholder="문의 내용을 작성해주세요."></textarea>
+                    <div class="textBox">
+                        <textarea th:field="*{content}" placeholder="문의 내용을 작성해주세요."></textarea>
+                        <p class="error" th:errors="*{content}">내용은 필수 입력 값입니다.</p>
+                    </div>
                 </li>
             </ul>
 
@@ -77,15 +97,6 @@
         </form>
 
     </div>
-</div>>
-<script>
-    function setEmailDomain(domain) {
-        if(domain !== '직접입력') {
-            document.querySelector('input[name="email02"]').value = domain;
-        } else {
-            document.querySelector('input[name="email02"]').value = '';
-        }
-    }
-</script>
+</div>
 </body>
 </html>
