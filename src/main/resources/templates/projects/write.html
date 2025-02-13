@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html
+    layout:decorate="~{layouts/layout}"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<body>
+<div layout:fragment="content">
+    <div class="contWrap projectWrap projWriteWrap">
+        <div class="subTitleWrap">
+            <p class="title">프로젝트 등록</p>
+        </div>
+        <div class="writeWrap">
+            <form>
+                <ul class="listBox">
+                    <li class="list01 list">
+                         <p class="tit">프로젝트명</p>
+                        <div class="txtBox">
+                            <select name="recommendProj" id="recommendProj">
+                                <option value="recommend">추천</option>
+                                <option value="general">일반</option>
+                            </select>
+                            <input type="text" placeholder="프로젝트명">
+                        </div>
+                    </li>
+                    <li class="list">
+                        <p class="tit">카테고리 설정</p>
+                        <div class="txtBox">
+                            <ul class="check">
+                                <li>
+                                    <input type="checkbox" id="category01" name="category01">
+                                    <label for="category01">전체</label>
+                                </li>
+                                <li>
+                                    <input type="checkbox" id="category02" name="category02">
+                                    <label for="category02">웹 개발</label>
+                                </li>
+                                <li>
+                                    <input type="checkbox" id="category03" name="category03">
+                                    <label for="category03">웹 & 모바일</label>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </form>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>

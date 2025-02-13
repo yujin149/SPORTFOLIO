@@ -1,0 +1,52 @@
+/*리스트 list.html*/
+.projectWrap{margin:calc(66px + 2.5rem) auto 2.5rem;}
+.writeBtnWrap{position:fixed; bottom:calc(152px + 70px); right:3%;}
+.writeBtnWrap a{display:flex; justify-content: center; align-items: center; width:60px; height:60px; border-radius: 50%; background:var(--main-color); }
+.writeBtnWrap a span{font-size:0;}
+.writeBtnWrap a span:before{content:''; display: block; width:24px; height:2px; border-radius: 2px; background:var(--white-color); position:absolute;top:50%; left:50%; transform:translate(-50%, -50%);}
+.writeBtnWrap a span:after{content:''; display: block; width:2px; height:24px; border-radius: 2px; background:var(--white-color);position:absolute;top:50%; left:50%; transform:translate(-50%, -50%);}
+.writeBtnWrap a:hover span:before{transform:rotate(180deg) translate(50%, 50%); transition: all .3s;}
+.writeBtnWrap a:hover span:after{transform:rotate(180deg) translate(50%, 50%); transition: all .3s;}
+
+/*등록 write.html*/
+.subTitleWrap .title{color:var(--bk-color); font-size:2rem; font-weight:700;}
+.projWriteWrap .writeWrap{margin-top:30px; }
+.projWriteWrap .writeWrap .listBox > li{display:flex; justify-content: space-between; align-items: center;}
+.projWriteWrap .writeWrap .listBox > li .tit{width:160px; font-size:1rem; color:var(--bk-color); font-weight:700; }
+.projWriteWrap .writeWrap .listBox > li .txtBox{display:flex; justify-content: space-between; align-items: center; width:calc(100% - 160px);}
+.projWriteWrap .writeWrap .listBox > li .txtBox select{width:160px; height:50px; padding:0 10px; border:1px solid var(--gray-color); border-radius: 10px; outline: none; cursor: pointer;}
+.projWriteWrap .writeWrap .listBox > li .txtBox input[type="text"]{width:calc(100% - 170px); height:50px; border:1px solid var(--gray-color); border-radius: 10px; padding: 0 10px; outline: none;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

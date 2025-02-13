@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>SPORTFOLIO</title>
+<!--    <meta name="_csrf" th:content="${_csrf.token}"/>-->
+<!--    <meta name="_csrf_header" th:content="${_csrf.headerName}"/>-->
+</head>
+<body>
+
+<div th:fragment="header">
+    <header class="headerWrap">
+        <div class="headerInner">
+            <h1 class="logo"><a href="/"><img th:src="@{/images/logo.png}" alt="SPORTFOLIO"></a></h1>
+            <div class="headerBtn">
+               <div class="searchWrap">
+                   <input type="text" placeholder="검색어를 입력해주세요.">
+                   <span class="icon"><img th:src="@{/images/search.png}" alt="검색"></span>
+               </div>
+                <a href="#" class="menuBtn">메뉴</a>
+            </div>
+        </div>
+    </header>
+    <div class="navWrap">
+        <ul class="nav">
+            <li><a href="#">ABOUT</a></li>
+            <li><a href="#">ARCHIVING</a></li>
+            <li><a href="/project">PROJECTS</a></li>
+            <li><a href="#">INQUIRY</a></li>
+        </ul>
+    </div>
+
+</div>
+</body>
+</html>

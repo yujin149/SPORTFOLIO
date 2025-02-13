@@ -1,0 +1,120 @@
+body{}
+img{width:100%;}
+/*헤더*/
+.headerWrap{width:100%; background:var(--white-color); border-bottom:1px solid var(--gray-color);position:fixed; top:0; left:0; z-index: 99999999;}
+.headerWrap .headerInner{width:1080px; display:flex; justify-content: space-between; align-items: center; height:66px; margin: auto;}
+.headerWrap .headerInner .logo a img{width:190px;}
+.headerWrap .headerInner .headerBtn{display: flex; justify-content: flex-end; align-items: center;}
+.headerWrap .headerInner .menuBtn{position:relative; font-size:0; display:block; width:26px; height:40px; margin-left:20px;}
+.headerWrap .headerInner .menuBtn:before{content:''; display: block; width:100%; height:2px; border-radius: 2px; background:var(--bk-color); position:absolute; top:13px; left:0;}
+.headerWrap .headerInner .menuBtn:after{content:''; display: block; width:100%; height:2px; border-radius: 2px; background:var(--bk-color); position:absolute; bottom:13px; left:0; }
+
+.headerWrap .headerInner .menuBtn.active:before{transform: rotate(45deg); top:50%; transition:all 0.2s;}
+.headerWrap .headerInner .menuBtn.active:after{transform: rotate(135deg); top:50%; transition:all 0.2s;}
+
+
+.navWrap{width:100%;border-bottom:1px solid var(--gray-color); background: var(--bg-color); position:fixed; top:66px; left:0; z-index: 9999999; box-shadow: var(--box-shadow); height:0;opacity: 0;}
+.navWrap.active{height:60px;opacity: 1; transition:all 0.2s;}
+
+.navWrap .nav{width:1080px; margin:20px auto; display: flex; justify-content: flex-start; align-items: center;}
+.navWrap .nav > li > a{font-size: 1rem; font-weight:600; color:var(--bk-color); padding:0 24px;}
+.navWrap .nav > li > a:hover{color:var(--main-color);}
+.navWrap .nav > li > a.active{color:var(--main-color);}
+.navWrap .nav li:first-child a{padding-left:0;}
+
+.contWrap{width:1080px; margin:0 auto;}
+
+/*메인 컨텐츠영역*/
+.mainProjectWrap{margin:calc(66px + 2.5rem) auto 2.5rem;}
+.mainProjectWrap .projectList{display: flex; justify-content: flex-start; align-items: flex-start; gap:24px;}
+.mainProjectWrap .projectList li{width:calc(33.33% - 16px);}
+.mainProjectWrap .projectList li .imgWrap{border:1px solid var(--gray-color); border-radius: 12px; overflow:hidden; width:100%; height:0; padding-bottom:60%; position:relative;}
+.mainProjectWrap .projectList li .imgWrap img{position:absolute; top:0; left:0; object-fit: cover;}
+.mainProjectWrap .projectList li .textWrap{margin-top:10px;}
+.mainProjectWrap .projectList li .textWrap .txtBox{display: flex; justify-content: space-between; align-items: center;}
+.mainProjectWrap .projectList li .textWrap .title{font-size:1.0625rem; color:var(--bk-color); font-weight:700; margin-bottom: 2px; width:calc(100% - 70px); display: block; text-overflow: ellipsis; text-wrap: nowrap; overflow: hidden;}
+.mainProjectWrap .projectList li:hover .textWrap .title{color:var(--main-color);}
+.mainProjectWrap .projectList li .textWrap .option{font-size:0.9375rem; color:var(--small-color);}
+.mainProjectWrap .projectList li .textWrap .view{font-size:0.875rem; color:var(--small-color); font-weight:700; display: flex; justify-content: flex-end; align-items: center;}
+.mainProjectWrap .projectList li .textWrap .view:before{content:'';display: block; width:22px; height:16px; background:url('/images/viewIcon.png') no-repeat; margin-right:2px;}
+
+
+.bannerWrap{width:100%; padding:2.5rem; margin-bottom:2.5rem; background:var(--bk-color);}
+.bannerWrap .subTitle{font-size:2rem; font-weight:700; color:var(--white-color); margin-bottom:12px;}
+.bannerWrap .list{display: flex; justify-content: space-between; align-items: center;}
+.bannerWrap .list li{width:calc(50% - 12px);}
+.bannerWrap .list li > a{display: block; width:100%; background:var(--white-color); border-radius: 12px; padding:40px 30px;}
+.bannerWrap .list li .name{font-size:2rem; font-weight:800; color:var(--bk-color);position:relative; padding-left:50px;}
+.bannerWrap .list li .name:before{content:''; display: block; width:40px; height:40px; position:absolute; top:50%; left:0; transform: translateY(-50%);}
+.bannerWrap .list li:nth-child(1) .name:before{background:url('/images/gitLogo.png') no-repeat; background-size:contain; width: 38px;}
+.bannerWrap .list li:nth-child(2) .name:before{background:url('/images/notionLogo.png') no-repeat; background-size:contain;}
+
+
+.bannerWrap .list li .link{color:var(--small-color); font-size:1rem; margin-top:20px;}
+.bannerWrap .list li .txt{color:var(--small-color); font-size:1rem; margin-top:20px; line-height:1.5;}
+
+.projectListWrap{margin-bottom: 2.5rem;}
+.projectListWrap .subTitle{font-size:2rem; font-weight:700; color:var(--bk-color); margin-bottom:12px;}
+.projectListWrap .tabWrap{display: flex; justify-content: flex-start; align-items: center; margin:2.5rem 0; }
+.projectListWrap .tabWrap li{margin-right:12px;}
+.projectListWrap .tabWrap li:last-child{margin-right:0px;}
+.projectListWrap .tabWrap li a{display: flex; justify-content: center;align-items: center; padding: 0 24px; height:40px; border:1px solid var(--gray-color); border-radius: 40px; font-weight:500; }
+.projectListWrap .tabWrap li.active a, .projectListWrap .tabWrap li:hover a{background:var(--main-color); color:var(--white-color); border-color:var(--main-color);}
+
+.projectListWrap .list{display: none; justify-content: flex-start; align-items: flex-start; flex-wrap:wrap; gap:40px 24px;}
+.projectListWrap .list.active{display: flex;}
+.projectListWrap .list li{width:calc(33.33% - 16px);}
+.projectListWrap .list li .imgWrap{border:1px solid var(--gray-color); border-radius: 12px; width:100%; padding-bottom:60%; height:0; position:relative; overflow: hidden;}
+.projectListWrap .list li .imgWrap img{position: absolute;top:0; left:0; object-fit: cover;}
+
+.projectListWrap li .textWrap{margin-top:10px;}
+.projectListWrap li .textWrap .txtBox{display: flex; justify-content: space-between; align-items: center;}
+.projectListWrap li .textWrap .title{font-size:1.0625rem; color:var(--bk-color); font-weight:700; margin-bottom: 2px; width:calc(100% - 70px); display: block; text-overflow: ellipsis; text-wrap: nowrap; overflow: hidden;}
+.projectListWrap li:hover .textWrap .title{color:var(--main-color);}
+.projectListWrap li .textWrap .option{font-size:0.9375rem; color:var(--small-color);}
+.projectListWrap li .textWrap .view{font-size:0.875rem; color:var(--small-color); font-weight:700; display: flex; justify-content: flex-end; align-items: center;}
+.projectListWrap li .textWrap .view:before{content:'';display: block; width:22px; height:16px; background:url('/images/viewIcon.png') no-repeat; margin-right:2px;}
+
+
+/* 푸터 영역*/
+.footer{background:var(--bk-color); padding:2.5rem 0;}
+.footer .footerInner .footerMenu{display: flex; justify-content: space-between; align-items: center;}
+.footer .footerInner .logo a{display: flex; width:150px;}
+.footer .footerInner .fMenu{width:calc(100% - 520px);}
+.footer .footerInner .fMenu{display: flex; justify-content: flex-start; align-items: center;}
+.footer .footerInner .fMenu li a{font-size:1rem; color:var(--small-color); font-weight:500; }
+.footer .footerInner .fMenu li:hover a{color:var(--white-color);}
+.footer .footerInner .fMenu li{margin-right:2.5rem;}
+.footer .footerInner .fMenu li:last-child{margin-right:0px;}
+
+.footer .footerInner .btnWrap a{display: flex; justify-content: center; align-items: center; width:160px; height:40px; border-radius: 8px; border:1px solid var(--small-color); color:var(--small-color); font-weight: 500; font-size:0.9375rem;}
+.footer .footerInner .btnWrap a:hover{border-color:var(--main-color); background: var(--main-color); color:var(--white-color);}
+.footer .footerInner .info{border-top:1px solid var(--text-color); font-size:0.875rem;  margin-top:12px; padding-top:12px; display: flex; justify-content: flex-start; align-items: center; }
+.footer .footerInner .info li{padding-right:24px; margin-right:24px; position:relative;}
+.footer .footerInner .info li:after{content:''; display: block; width:1px; height:0.625rem; background:var(--text-color); position:absolute; top:50%; right:0; transform: translateY(-50%);}
+.footer .footerInner .info li:last-child:after{display: none;}
+.footer .footerInner .copyright{ font-size:0.875rem; margin-top:5px;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
