@@ -35,39 +35,39 @@ public class InquiryDto {
 
     // 이메일을 합치는 메서드
     public void combineEmail(String email01, String email02) {
-        System.out.println("email01: " + email01);
-        System.out.println("email02: " + email02);
-
-        if (email01 != null && !email01.isEmpty()) {
-            if (email02 != null && !email02.isEmpty()) {
-                // email02가 입력된 경우
-                this.email = email01 + "@" + email02;
-            } else {
-                // email02가 비어 있으면 hiddenEmailDomain에서 가져오기
-                if (this.hiddenEmailDomain != null && !this.hiddenEmailDomain.isEmpty()) {
-                    this.email = email01 + "@" + this.hiddenEmailDomain;  // emailDomain이 있다면 결합
-                } else {
-                    this.email = email01;  // emailDomain이 없으면 email01만 사용
-                }
-            }
-            System.out.println("이메일 합치기 : " + this.email);  // 이메일 결합 후 값 확인
+        if (email01 == null || email01.trim().isEmpty()) {
+            this.email = null;
+            return;
         }
+
+        String domain;
+        // email02가 있으면 그것을 사용
+        if (email02 != null && !email02.trim().isEmpty()) {
+            domain = email02;
+        }
+        // email02가 없고 hiddenEmailDomain이 있으면 그것을 사용
+        else if (this.hiddenEmailDomain != null && !this.hiddenEmailDomain.trim().isEmpty()
+                && !"직접입력".equals(this.hiddenEmailDomain)) {
+            domain = this.hiddenEmailDomain;
+        }
+        // 둘 다 없으면 null 처리
+        else {
+            this.email = null;
+            return;
+        }
+
+        this.email = email01.trim() + "@" + domain.trim();
     }
-
-
 
     // 전화번호를 합치는 메서드
     public void combinePhone(String phone1, String phone2, String phone3) {
-        System.out.println("phone1: " + phone1);  // phone1 값 확인
-        System.out.println("phone2: " + phone2);  // phone2 값 확인
-        System.out.println("phone3: " + phone3);  // phone3 값 확인
-        if (phone1 != null && !phone1.isEmpty() && phone2 != null && !phone2.isEmpty() && phone3 != null && !phone3.isEmpty()) {
-            this.phone = phone1 + "-" + phone2 + "-" + phone3;
-        } else {
-            this.phone = "";  // 빈 값 처리
+        if (phone1 == null || phone2 == null || phone3 == null ||
+            phone1.trim().isEmpty() || phone2.trim().isEmpty() || phone3.trim().isEmpty()) {
+            this.phone = null;
+            return;
         }
-        System.out.println("연락처 합치기 : " + this.phone);  // 전화번호 결합 후 값 확인
+
+        this.phone = phone1.trim() + "-" + phone2.trim() + "-" + phone3.trim();
     }
 
- 
 }
