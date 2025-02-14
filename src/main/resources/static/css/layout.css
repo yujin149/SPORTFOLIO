@@ -22,7 +22,7 @@ textarea{border:1px solid var(--gray-color); border-radius: 5px; outline: none; 
 .tableWrap.writeWrap table tr:hover td{background:inherit;}
 
 /*페이징 pagingWrap*/
-.pagingWrap{margin-top:40px;}
+.pagingWrap{margin-top:2.5rem;}
 .pagingWrap .pagination{display:flex; justify-content:center; align-items:center;}
 .pagingWrap .pagination li a.pageBtn{display:flex; align-items:center; padding:20px;}
 .pagingWrap .pagination li a.pageBtn img{width:18px;}
