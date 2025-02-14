@@ -32,8 +32,8 @@
                         <tr th:if="${#lists.isEmpty(inquiries)}">
                             <td colspan="4">등록된 문의가 없습니다.</td>
                         </tr>
-                        <tr th:each="inquiry : ${inquiries}">
-                            <td th:text="${inquiry.id}">No</td>
+                        <tr th:each="inquiry, stat : ${inquiries}">
+                            <td th:text="${startNumber + stat.index}">No</td>
                             <td th:text="${inquiry.title}" style="text-align: left">제목</td>
                             <td th:text="${inquiry.company}">회사명</td>
                             <td th:text="${#temporals.format(inquiry.regTime, 'yyyy-MM-dd')}">등록일</td>
