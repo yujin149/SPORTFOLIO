@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @Transactional
 public class InquiryService {
@@ -23,5 +25,10 @@ public class InquiryService {
         inquiry.setContent(inquiryDto.getContent());
         
         inquiryRepository.save(inquiry);
+    }
+
+    //문의하기 데이터 가져오기
+    public List<Inquiry> getInquiry() {
+        return inquiryRepository.findAll();
     }
 }

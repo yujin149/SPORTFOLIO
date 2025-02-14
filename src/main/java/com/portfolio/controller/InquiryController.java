@@ -1,6 +1,7 @@
 package com.portfolio.controller;
 
 import com.portfolio.dto.InquiryDto;
+import com.portfolio.entity.Inquiry;
 import com.portfolio.service.InquiryService;
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.Validation;
@@ -14,6 +15,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.List;
 import java.util.Set;
 
 @Slf4j
@@ -69,7 +71,11 @@ public class InquiryController {
     /*문의리스트 - 관리자*/
     @GetMapping(value = "admin/inquiryList")
     public String inquiryList(Model model) {
-        model.addAttribute("inquiryDto", new InquiryDto());
+        List<Inquiry> inquiries = inquiryService.getInquiry();
+        model.addAttribute("inquiries", inquiries);
         return "inquiryList";
     }
+
+
+
 }

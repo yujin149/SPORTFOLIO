@@ -11,5 +11,8 @@ public interface InquiryRepository extends JpaRepository<Inquiry, Long> {
     List<Inquiry> findByPhone(String phone);
     List<Inquiry> findByEmail(String email);
 
+    //리스트 불러오기
+    List<Inquiry> findAll();
+
 
 }
