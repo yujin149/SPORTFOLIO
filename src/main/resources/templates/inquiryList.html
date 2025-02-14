@@ -44,9 +44,25 @@
 
             <div class="pagingWrap">
                 <ul class="pagination">
-                    <li><a href="#" class="pageBtn prevBtn"><img th:src="@{/images/arrowLeft.png}" alt="이전"></a></li>
-                    <li><a href="#" class="num on">1</a></li>
-                    <li><a href="#" class="pageBtn nextBtn"><img th:src="@{/images/arrowRight.png}" alt="다음"></a></li>
+                    <li th:if="${inquiriesPage.hasPrevious()}">
+                        <a th:href="@{/admin/inquiryList(page=${inquiriesPage.number - 1}, size=${inquiriesPage.size})}" 
+                           class="pageBtn prevBtn">
+                            <img th:src="@{/images/arrowLeft.png}" alt="이전">
+                        </a>
+                    </li>
+                    
+                    <li th:each="pageNum : ${#numbers.sequence(0, inquiriesPage.totalPages - 1)}">
+                        <a th:href="@{/admin/inquiryList(page=${pageNum}, size=${inquiriesPage.size})}" 
+                           th:text="${pageNum + 1}"
+                           th:class="${pageNum == inquiriesPage.number} ? 'num on' : 'num'">1</a>
+                    </li>
+                    
+                    <li th:if="${inquiriesPage.hasNext()}">
+                        <a th:href="@{/admin/inquiryList(page=${inquiriesPage.number + 1}, size=${inquiriesPage.size})}" 
+                           class="pageBtn nextBtn">
+                            <img th:src="@{/images/arrowRight.png}" alt="다음">
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>

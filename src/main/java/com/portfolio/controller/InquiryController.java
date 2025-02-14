@@ -9,11 +9,13 @@ import jakarta.validation.Validator;
 import jakarta.validation.ValidatorFactory;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 import java.util.Set;
@@ -70,9 +72,10 @@ public class InquiryController {
 
     /*문의리스트 - 관리자*/
     @GetMapping(value = "admin/inquiryList")
-    public String inquiryList(Model model) {
-        List<Inquiry> inquiries = inquiryService.getInquiry();
-        model.addAttribute("inquiries", inquiries);
+    public String inquiryList(Model model, @RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "5") int size) {
+        Page<Inquiry> inquiriesPage = inquiryService.getInquiriesPage(page, size); // 페이징된 데이터 가져오기
+        model.addAttribute("inquiriesPage", inquiriesPage); // 전체 페이지 정보
+        model.addAttribute("inquiries", inquiriesPage.getContent()); // 현재 페이지의 데이터 목록
         return "inquiryList";
     }
 

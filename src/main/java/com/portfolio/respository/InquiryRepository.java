@@ -1,6 +1,8 @@
 package com.portfolio.respository;
 
 import com.portfolio.entity.Inquiry;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -11,8 +13,9 @@ public interface InquiryRepository extends JpaRepository<Inquiry, Long> {
     List<Inquiry> findByPhone(String phone);
     List<Inquiry> findByEmail(String email);
 
-    //리스트 불러오기
-    List<Inquiry> findAll();
+
+    //페이징 및 리스트 가져오기
+    Page<Inquiry> findAll(Pageable pageable);
 
 
 }

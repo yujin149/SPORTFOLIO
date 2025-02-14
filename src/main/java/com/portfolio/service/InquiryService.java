@@ -4,6 +4,9 @@ import com.portfolio.dto.InquiryDto;
 import com.portfolio.entity.Inquiry;
 import com.portfolio.respository.InquiryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -26,9 +29,10 @@ public class InquiryService {
         
         inquiryRepository.save(inquiry);
     }
-
-    //문의하기 데이터 가져오기
-    public List<Inquiry> getInquiry() {
-        return inquiryRepository.findAll();
+    
+    //페이징 처리 및 리스트 가져오기
+    public Page<Inquiry> getInquiriesPage(int page, int size) {
+        Pageable pageable = PageRequest.of(page, size);
+        return inquiryRepository.findAll(pageable);
     }
 }
