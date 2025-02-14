@@ -33,6 +33,6 @@ public class InquiryService {
     //페이징 처리 및 리스트 가져오기
     public Page<Inquiry> getInquiriesPage(int page, int size) {
         Pageable pageable = PageRequest.of(page, size);
-        return inquiryRepository.findAll(pageable);
+        return inquiryRepository.findAllByOrderByRegTimeDesc(pageable);
     }
 }

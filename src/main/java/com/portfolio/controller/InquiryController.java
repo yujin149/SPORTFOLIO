@@ -73,11 +73,12 @@ public class InquiryController {
     /*문의리스트 - 관리자*/
     @GetMapping(value = "admin/inquiryList")
     public String inquiryList(Model model, @RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "5") int size) {
-        Page<Inquiry> inquiriesPage = inquiryService.getInquiriesPage(page, size); // 페이징된 데이터 가져오기
-        int startNumber = page * size + 1; //첫 번째 번호 계산
-        model.addAttribute("inquiriesPage", inquiriesPage); // 전체 페이지 정보
-        model.addAttribute("inquiries", inquiriesPage.getContent()); // 현재 페이지의 데이터 목록
-        model.addAttribute("startNumber", startNumber); //시작번호 전달
+        Page<Inquiry> inquiriesPage = inquiryService.getInquiriesPage(page, size);
+        // 마지막 번호 계산: 전체 개수 - (현재 페이지 * 페이지 크기)
+        int endNumber = (int) inquiriesPage.getTotalElements() - (page * size);
+        model.addAttribute("inquiriesPage", inquiriesPage);
+        model.addAttribute("inquiries", inquiriesPage.getContent());
+        model.addAttribute("endNumber", endNumber); // startNumber 대신 endNumber 전달
         return "inquiryList";
     }
 

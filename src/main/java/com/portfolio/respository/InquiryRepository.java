@@ -13,9 +13,6 @@ public interface InquiryRepository extends JpaRepository<Inquiry, Long> {
     List<Inquiry> findByPhone(String phone);
     List<Inquiry> findByEmail(String email);
 
-
-    //페이징 및 리스트 가져오기
-    Page<Inquiry> findAll(Pageable pageable);
-
-
+    //페이징 및 리스트 가져오기 (등록일 기준 내림차순)
+    Page<Inquiry> findAllByOrderByRegTimeDesc(Pageable pageable);
 }
