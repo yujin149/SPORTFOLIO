@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{layouts/layout}"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<body>
+<div layout:fragment="content">
+    <div class="contWrap inquiryWrap">
+        <div class="subTitleWrap">
+            <p class="title">문의 리스트</p>
+        </div>
+
+        <div class="tableWrap listTable">
+            <table>
+                <colgroup>
+                    <col width="8%">
+                    <col width="*">
+                    <col width="12%">
+                    <col width="12%">
+                </colgroup>
+                <thead>
+                <tr>
+                    <th>No</th>
+                    <th>제목</th>
+                    <th>회사명</th>
+                    <th>등록일</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!--
+                <tr th:each="inquiry : ${inquiryDto}">
+                    <td th:text="${inquiry.id}">No</td>
+                    <td th:text="${inquiry.title}">제목</td>
+                    <td th:text="${inquiry.company}">회사명</td>
+                    <td th:text="${inquiry.regTime}">등록일</td>
+                </tr>
+                -->
+                <tr>
+                    <td>1</td>
+                    <td style="text-align: left">제목이 들어갈 자리입니다.</td>
+                    <td>회사명</td>
+                    <td>2025.01.24</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="pagingWrap">
+            <ul class="pagination">
+                <li><a href="#" class="pageBtn prevBtn"><img th:src="@{/images/arrowLeft.png}" alt="이전"></a></li>
+                <li><a href="#" class="num on">1</a></li>
+                <li><a href="#" class="pageBtn nextBtn"><img th:src="@{/images/arrowRight.png}" alt="다음"></a></li>
+            </ul>
+        </div>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>

@@ -29,3 +29,6 @@
 
 .inquiryWrap .btnWrap{display: flex; justify-content: flex-end; align-items: center; margin-top:2.5rem;}
 .inquiryWrap .btnWrap button{display: flex;justify-content: center; align-items: center; border-radius: 10px; height:50px; font-weight:600; color:var(--white-color); background:var(--main-color); width:220px; cursor: pointer; border:none;}
+
+/*문의 리스트 */
+.inquiryWrap .listTable{margin-top:10px;}

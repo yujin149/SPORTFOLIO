@@ -65,4 +65,11 @@ public class InquiryController {
         return "redirect:/"; // 저장 후 홈으로 리디렉션
     }
 
+
+    /*문의리스트 - 관리자*/
+    @GetMapping(value = "admin/inquiryList")
+    public String inquiryList(Model model) {
+        model.addAttribute("inquiryDto", new InquiryDto());
+        return "inquiryList";
+    }
 }
