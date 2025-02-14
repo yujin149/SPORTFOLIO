@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout}">
+<head>
+    <title>문의 내용</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="contWrap inquiryWrap">
+        <div class="tableWrap writeWrap viewTable">
+            <table>
+                <colgroup>
+                    <col width="15%">
+                    <col width="35%">
+                    <col width="15%">
+                    <col width="35%">
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th colspan="4" th:text="${inquiry.title}">제목</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="tit">회사명</td>
+                        <td th:text="${inquiry.company}">회사 이름</td>
+                        <td class="tit">담당자명</td>
+                        <td th:text="${inquiry.name}">송유진</td>
+                    </tr>
+                    <tr>
+                        <td class="tit">이메일</td>
+                        <td th:text="${inquiry.email}">aaa@naver.com</td>
+                        <td class="tit">연락처</td>
+                        <td th:text="${inquiry.phone}">010-1234-1234</td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">
+                            <p class="text" th:text="${inquiry.content}">문의 내용이 들어갈 자리</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+
+        </div>
+        <div class="btnWrap">
+            <a href="/admin/inquiryList">목록</a>
+        </div>
+
+
+    </div>
+</div>
+</body>
+</html>

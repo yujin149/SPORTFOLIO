@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.List;
 import java.util.Set;
 
 @Slf4j
@@ -29,7 +28,7 @@ public class InquiryController {
     @GetMapping(value = "/inquiry")
     public String inquiry(Model model) {
         model.addAttribute("inquiryDto", new InquiryDto());
-        return "inquiry";
+        return "/inquiry/inquiry";
     }
 
     @PostMapping(value = "/inquiry")
@@ -60,7 +59,7 @@ public class InquiryController {
                 bindingResult.rejectValue(propertyPath, "", message);
                 log.error("Validation error - {}: {}", propertyPath, message);
             });
-            return "inquiry";
+            return "/inquiry/inquiry";
         }
 
         // 문의사항 저장
@@ -79,9 +78,15 @@ public class InquiryController {
         model.addAttribute("inquiriesPage", inquiriesPage);
         model.addAttribute("inquiries", inquiriesPage.getContent());
         model.addAttribute("endNumber", endNumber); // startNumber 대신 endNumber 전달
-        return "inquiryList";
+        return "/inquiry/inquiryList";
     }
 
-
+    /*문의하기 뷰페이지*/
+    @GetMapping(value = "admin/inquiryView")
+    public String inquiryView(@RequestParam("id") Long id, Model model) {
+        Inquiry inquiry = inquiryService.getInquiryById(id);
+        model.addAttribute("inquiry", inquiry);
+        return "/inquiry/inquiryView";
+    }
 
 }

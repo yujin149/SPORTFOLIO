@@ -35,4 +35,10 @@ public class InquiryService {
         Pageable pageable = PageRequest.of(page, size);
         return inquiryRepository.findAllByOrderByRegTimeDesc(pageable);
     }
+
+    //문의 상세 조회
+    public Inquiry getInquiryById(Long id) {
+        return inquiryRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("문의를 찾을 수 없습니다."));
+    }
 }
