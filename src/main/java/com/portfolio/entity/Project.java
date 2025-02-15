@@ -26,13 +26,13 @@ public class Project extends BaseEntity{
     private String title; // 프로젝트명
 
     @Column(name = "project_category", length = 60)
-    private String category; // 프로젝트명
+    private String category; // 프로젝트 카테고리
 
     @Column(name = "project_client", length = 50)
     private String client; // 클라이언트명
 
     @Column(name = "project_type", length = 50)
-    private String type; // 타입
+    private String type; // 타입(etc에 들어갈 내용)
 
     @Column(name = "project_tool", length = 100)
     private String tool; // 툴
