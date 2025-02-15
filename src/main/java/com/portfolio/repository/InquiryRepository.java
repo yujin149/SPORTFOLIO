@@ -1,4 +1,4 @@
-package com.portfolio.respository;
+package com.portfolio.repository;
 
 import com.portfolio.entity.Inquiry;
 import org.springframework.data.domain.Page;
