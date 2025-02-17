@@ -23,6 +23,7 @@ public class ProjectDto {
     private String url;
     private List<ProjectCategoryStatus> categories; //카테고리 목록
     private List<ProjectImgDto> projectImgList; //이미지 목록 (ProjectImgDto 형태로 변환)
+    private Integer viewCount;
 
 
     public ProjectDto() {

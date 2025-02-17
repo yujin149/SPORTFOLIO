@@ -26,11 +26,12 @@
                         <div class="txtBox">
                             <ul class="check">
                                 <li th:each="category : ${T(com.portfolio.constant.ProjectCategoryStatus).values()}">
-                                    <input type="checkbox" 
+                                    <input type="checkbox"
                                            th:id="${'category-' + category.name()}"
                                            th:value="${category.name()}"
-                                           name="categories">
-                                    <label th:for="${'category-' + category.name()}" 
+                                           name="categories"
+                                           th:checked="${category == T(com.portfolio.constant.ProjectCategoryStatus).ALL ? true : false}">
+                                    <label th:for="${'category-' + category.name()}"
                                            th:text="${category.displayName}">카테고리명</label>
                                 </li>
                             </ul>

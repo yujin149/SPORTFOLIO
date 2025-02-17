@@ -58,4 +58,7 @@ public class Project extends BaseEntity {
     )
     @Column(name = "category")
     private List<ProjectCategoryStatus> categories = new ArrayList<>(); // 프로젝트 카테고리 목록
+
+    @Column(name = "project_view", columnDefinition = "integer default 0")
+    private Integer viewCount = 0;
 }

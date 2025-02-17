@@ -40,36 +40,36 @@ public class ProjectController {
     public String write(Model model) {
         // HTML 예시 텍스트 설정
         String htmlExample = "<span class=\"bold\">굵은 텍스트</span> 일반 텍스트 <span class=\"color\">색상 텍스트</span>";
-        
+
         // 각 텍스트 영역에 대한 예시 설정
         model.addAttribute("htmlConcept", htmlExample);
         model.addAttribute("htmlPart", htmlExample);
         model.addAttribute("htmlDetail", htmlExample);
-        
+
         return "/projects/write";
     }
     @PostMapping("/write")
     public String writeProject(
         @ModelAttribute ProjectDto projectDto,
         @RequestParam("projectImgFile") List<MultipartFile> projectImgFiles) throws IOException, Exception {
-        
+
         // 이미지 처리 및 ProjectImgDto 생성
         List<ProjectImgDto> projectImgDtoList = new ArrayList<>();
-        
+
         for (int i = 0; i < projectImgFiles.size(); i++) {
             MultipartFile file = projectImgFiles.get(i);
             if (!file.isEmpty()) {
                 ProjectImgDto imgDto = new ProjectImgDto();
-                
+
                 // 파일 저장 및 URL 생성
                 String originalFilename = file.getOriginalFilename();
                 String savedFileName = fileService.uploadFile(uploadPath, originalFilename, file.getBytes());
                 String imageUrl = "/images/project/" + savedFileName;
-                
+
                 imgDto.setImgName(savedFileName);
                 imgDto.setOriImgName(originalFilename);
                 imgDto.setImgUrl(imageUrl);
-                
+
                 // 이미지 타입 설정
                 ProjectImgStatus imageType = switch (i) {
                     case 0 -> ProjectImgStatus.MAINBANNER;
@@ -82,16 +82,16 @@ public class ProjectController {
                     default -> ProjectImgStatus.ETC;
                 };
                 imgDto.setImageType(imageType);
-                
+
                 projectImgDtoList.add(imgDto);
             }
         }
-        
+
         projectDto.setProjectImgList(projectImgDtoList);
-        
+
         // 프로젝트 저장
         Project savedProject = projectService.writeProject(projectDto);
-        
+
         return "redirect:/project";
     }
 
