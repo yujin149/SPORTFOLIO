@@ -9,6 +9,7 @@ import com.portfolio.constant.ProjectImgStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -36,7 +37,15 @@ public class ProjectController {
     }
 
     @GetMapping("project/write")
-    public String write() {
+    public String write(Model model) {
+        // HTML 예시 텍스트 설정
+        String htmlExample = "<span class=\"bold\">굵은 텍스트</span> 일반 텍스트 <span class=\"color\">색상 텍스트</span>";
+        
+        // 각 텍스트 영역에 대한 예시 설정
+        model.addAttribute("htmlConcept", htmlExample);
+        model.addAttribute("htmlPart", htmlExample);
+        model.addAttribute("htmlDetail", htmlExample);
+        
         return "/projects/write";
     }
     @PostMapping("/write")
@@ -85,4 +94,6 @@ public class ProjectController {
         
         return "redirect:/project";
     }
+
+
 }

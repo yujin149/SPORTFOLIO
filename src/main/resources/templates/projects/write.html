@@ -57,21 +57,21 @@
                     <li class="list list02">
                         <p class="tit">프로젝트 컨셉</p>
                         <div class="txtBox">
-                            <textarea name="concept" ></textarea>
+                            <textarea name="concept"  th:utext="${htmlConcept}"></textarea>
                             <p class="ex">&lt;span class="bold"&gt;는 글씨 크기가 굵게, &lt;span class="color"&gt;는 포인트 컬러로 색상 변경됩니다.</p>
                         </div>
                     </li>
                     <li class="list list02 list03">
                         <p class="tit">프로젝트 참여도</p>
                         <div class="txtBox">
-                            <textarea name="part" ></textarea>
+                            <textarea name="part" th:utext="${htmlPart}"></textarea>
                             <p class="ex">&lt;span class="bold"&gt;는 글씨 크기가 굵게, &lt;span class="color"&gt;는 포인트 컬러로 색상 변경됩니다.</p>
                         </div>
                     </li>
                     <li class="list list02">
                         <p class="tit">프로젝트 설명</p>
                         <div class="txtBox">
-                            <textarea name="detail" ></textarea>
+                            <textarea name="detail" th:utext="${htmlDetail}"></textarea>
                             <p class="ex">&lt;span class="bold"&gt;는 글씨 크기가 굵게, &lt;span class="color"&gt;는 포인트 컬러로 색상 변경됩니다.</p>
                         </div>
                     </li>

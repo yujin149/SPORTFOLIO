@@ -30,9 +30,9 @@ public class ProjectService {
         project.setClient(projectDto.getClient());
         project.setType(projectDto.getType());
         project.setTool(projectDto.getTool());
-        project.setConcept(projectDto.getConcept());
-        project.setPart(projectDto.getPart());
-        project.setDetail(projectDto.getDetail());
+        project.setConcept(processContent(projectDto.getConcept()));
+        project.setPart(processContent(projectDto.getPart()));
+        project.setDetail(processContent(projectDto.getDetail()));
         project.setUrl(projectDto.getUrl());
         project.setCategories(projectDto.getCategories());
 
@@ -51,6 +51,16 @@ public class ProjectService {
         }
 
         return savedProject; // 등록된 프로젝트 반환
+    }
+
+    // HTML 컨텐츠를 처리하는 메소드
+    public String processContent(String content) {
+        if (content == null) {
+            return "";
+        }
+        // XSS 방지를 위한 기본적인 검증이 필요할 수 있습니다.
+        // 여기서는 간단히 허용된 태그만 통과시키는 예시를 들겠습니다.
+        return content.replaceAll("(?i)<(?!/?span)[^>]*>", ""); // span 태그만 허용
     }
 
 }
