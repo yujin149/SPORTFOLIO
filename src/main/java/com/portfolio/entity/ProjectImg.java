@@ -4,14 +4,15 @@ import com.portfolio.constant.ProjectImgStatus;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 @Entity
-@Table(name = "project_img")
 @Getter
 @Setter
+@ToString
 public class ProjectImg extends BaseEntity {
     @Id
-    @Column(name="projectimg_id")
+    @Column(name = "projectImg_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
@@ -28,10 +29,7 @@ public class ProjectImg extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private ProjectImgStatus imageType; // 이미지 타입 (BANNER, PREVIEW, DETAIL 등)
 
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "project_id")
     private Project project; // 프로젝트와 연관
-
-
 }

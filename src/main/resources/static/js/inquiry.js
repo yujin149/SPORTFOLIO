@@ -18,7 +18,7 @@ $(function() {
 
 
     // 폼 제출 전 유효성 검사
-    $("form").submit(function(e) {
+    $(".inquiryForm").submit(function(e) {
         // 개인정보 수집 동의 체크 확인
         if (!$(".agreeChk input[type='checkbox']").is(":checked")) {
             alert("개인정보 수집에 동의해주세요.");

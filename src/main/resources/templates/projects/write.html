@@ -9,44 +9,45 @@
             <p class="title">프로젝트 등록</p>
         </div>
         <div class="writeWrap">
-            <form>
+            <form action="/project/write" method="post" enctype="multipart/form-data">
                 <ul class="listBox">
                     <li class="list01 list">
-                         <p class="tit">프로젝트명</p>
+                        <p class="tit">프로젝트명</p>
                         <div class="txtBox">
-                            <select name="recommendProj" id="recommendProj">
-                                <option value="recommend">추천</option>
-                                <option value="general">일반</option>
+                            <select name="projectStatus" id="recommendProj">
+                                <option value="NOTICE">추천</option>
+                                <option value="GENERAL">일반</option>
                             </select>
-                            <input type="text" placeholder="프로젝트명">
+                            <input type="text" name="title" placeholder="프로젝트명">
                         </div>
                     </li>
                     <li class="list">
                         <p class="tit">카테고리 설정</p>
                         <div class="txtBox">
+                            <input type="hidden" name="category" id="categoryInput">
                             <ul class="check">
                                 <li>
-                                    <input type="checkbox" id="category01" name="category01">
+                                    <input type="checkbox" id="category01" value="전체" >
                                     <label for="category01">전체</label>
                                 </li>
                                 <li>
-                                    <input type="checkbox" id="category02" name="category02">
+                                    <input type="checkbox" id="category02" value="웹 개발">
                                     <label for="category02">웹 개발</label>
                                 </li>
                                 <li>
-                                    <input type="checkbox" id="category03" name="category03">
+                                    <input type="checkbox" id="category03" value="웹 & 모바일">
                                     <label for="category03">웹 & 모바일</label>
                                 </li>
                                 <li>
-                                    <input type="checkbox" id="category04" name="category04">
+                                    <input type="checkbox" id="category04" value="반응형 웹">
                                     <label for="category04">반응형 웹</label>
                                 </li>
                                 <li>
-                                    <input type="checkbox" id="category05" name="category05">
+                                    <input type="checkbox" id="category05" value="SNS 컨텐츠">
                                     <label for="category05">SNS 컨텐츠</label>
                                 </li>
                                 <li>
-                                    <input type="checkbox" id="category06" name="category06">
+                                    <input type="checkbox" id="category06" value="상세페이지 & 이벤트페이지">
                                     <label for="category06">상세페이지 & 이벤트페이지</label>
                                 </li>
                             </ul>
@@ -55,94 +56,94 @@
                     <li class="list">
                         <p class="tit">클라이언트</p>
                         <div class="txtBox">
-                            <input type="text">
+                            <input type="text" name="client">
                         </div>
                     </li>
                     <li class="list">
                         <p class="tit">타입</p>
                         <div class="txtBox">
-                            <input type="text">
+                            <input type="text" name="type">
                         </div>
                     </li>
                     <li class="list">
                         <p class="tit">작업 툴</p>
                         <div class="txtBox">
-                            <input type="text">
+                            <input type="text" name="tool">
                         </div>
                     </li>
                     <li class="list list02">
                         <p class="tit">프로젝트 컨셉</p>
                         <div class="txtBox">
-                            <textarea name="projTxt01" id="projTxt01" ></textarea>
+                            <textarea name="concept" ></textarea>
                             <p class="ex">&lt;span class="bold"&gt;는 글씨 크기가 굵게, &lt;span class="color"&gt;는 포인트 컬러로 색상 변경됩니다.</p>
                         </div>
                     </li>
                     <li class="list list02 list03">
                         <p class="tit">프로젝트 참여도</p>
                         <div class="txtBox">
-                            <textarea name="projTxt02" id="projTxt02" ></textarea>
+                            <textarea name="part" ></textarea>
                             <p class="ex">&lt;span class="bold"&gt;는 글씨 크기가 굵게, &lt;span class="color"&gt;는 포인트 컬러로 색상 변경됩니다.</p>
                         </div>
                     </li>
                     <li class="list list02">
                         <p class="tit">프로젝트 설명</p>
                         <div class="txtBox">
-                            <textarea name="projTxt02" id="projTxt02" ></textarea>
+                            <textarea name="detail" ></textarea>
                             <p class="ex">&lt;span class="bold"&gt;는 글씨 크기가 굵게, &lt;span class="color"&gt;는 포인트 컬러로 색상 변경됩니다.</p>
                         </div>
                     </li>
                     <li class="list listImg">
                         <p class="tit">메인 배너</p>
                         <div class="txtBox">
-                            <input type="file" id="bannerImg">
+                            <input type="file" name="projectImgFile" id="bannerImg">
                         </div>
                     </li>
                     <li class="list listImg">
                         <p class="tit">미리보기 이미지</p>
                         <div class="txtBox">
-                            <input type="file" id="previewImg">
+                            <input type="file" name="projectImgFile" id="previewImg">
                         </div>
                     </li>
                     <li class="list listImg">
                         <p class="tit">메인 페이지</p>
                         <div class="txtBox">
-                            <input type="file" id="mainImg">
+                            <input type="file" name="projectImgFile" id="mainImg">
                         </div>
                     </li>
                     <li class="list listImg">
                         <p class="tit">서브 페이지 01</p>
                         <div class="txtBox">
-                            <input type="file" id="subImg01">
+                            <input type="file" name="projectImgFile" id="subImg01">
                         </div>
                     </li>
                     <li class="list listImg">
                         <p class="tit">서브 페이지 02</p>
                         <div class="txtBox">
-                            <input type="file" id="subImg02">
+                            <input type="file" name="projectImgFile" id="subImg02">
                         </div>
                     </li>
                     <li class="list listImg">
                         <p class="tit">상세 페이지 01</p>
                         <div class="txtBox">
-                            <input type="file" id="detailImg01">
+                            <input type="file" name="projectImgFile" id="detailImg01">
                         </div>
                     </li>
                     <li class="list listImg">
                         <p class="tit">상세 페이지 02</p>
                         <div class="txtBox">
-                            <input type="file" id="detailImg02">
+                            <input type="file" name="projectImgFile" id="detailImg02">
                         </div>
                     </li>
                     <li class="list listImg">
                         <p class="tit">ETC</p>
                         <div class="txtBox">
-                            <input type="file" id="etcImg">
+                            <input type="file" name="projectImgFile" id="etcImg">
                         </div>
                     </li>
                     <li class="list">
                         <p class="tit">사이트 주소</p>
                         <div class="txtBox">
-                            <input type="text">
+                            <input type="text" name="url">
                         </div>
                     </li>
                 </ul>
@@ -155,5 +156,13 @@
 
     </div>
 </div>
+
+<script>
+function updateCategories() {
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+    const categories = Array.from(checkboxes).map(cb => cb.value).join(',');
+    document.getElementById('categoryInput').value = categories;
+}
+</script>
 </body>
 </html>
