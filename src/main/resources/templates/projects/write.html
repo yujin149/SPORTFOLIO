@@ -9,7 +9,7 @@
             <p class="title">프로젝트 등록</p>
         </div>
         <div class="writeWrap">
-            <form action="/project/write" method="post" enctype="multipart/form-data">
+            <form action="/write" method="post" enctype="multipart/form-data">
                 <ul class="listBox">
                     <li class="list01 list">
                         <p class="tit">프로젝트명</p>
@@ -24,31 +24,14 @@
                     <li class="list">
                         <p class="tit">카테고리 설정</p>
                         <div class="txtBox">
-                            <input type="hidden" name="category" id="categoryInput">
                             <ul class="check">
-                                <li>
-                                    <input type="checkbox" id="category01" value="전체" >
-                                    <label for="category01">전체</label>
-                                </li>
-                                <li>
-                                    <input type="checkbox" id="category02" value="웹 개발">
-                                    <label for="category02">웹 개발</label>
-                                </li>
-                                <li>
-                                    <input type="checkbox" id="category03" value="웹 & 모바일">
-                                    <label for="category03">웹 & 모바일</label>
-                                </li>
-                                <li>
-                                    <input type="checkbox" id="category04" value="반응형 웹">
-                                    <label for="category04">반응형 웹</label>
-                                </li>
-                                <li>
-                                    <input type="checkbox" id="category05" value="SNS 컨텐츠">
-                                    <label for="category05">SNS 컨텐츠</label>
-                                </li>
-                                <li>
-                                    <input type="checkbox" id="category06" value="상세페이지 & 이벤트페이지">
-                                    <label for="category06">상세페이지 & 이벤트페이지</label>
+                                <li th:each="category : ${T(com.portfolio.constant.ProjectCategoryStatus).values()}">
+                                    <input type="checkbox" 
+                                           th:id="${'category-' + category.name()}"
+                                           th:value="${category.name()}"
+                                           name="categories">
+                                    <label th:for="${'category-' + category.name()}" 
+                                           th:text="${category.displayName}">카테고리명</label>
                                 </li>
                             </ul>
                         </div>
@@ -157,12 +140,40 @@
     </div>
 </div>
 
-<script>
-function updateCategories() {
-    const checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
-    const categories = Array.from(checkboxes).map(cb => cb.value).join(',');
-    document.getElementById('categoryInput').value = categories;
-}
+<script th:inline="javascript">
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.querySelector('form');
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // 폼 데이터 수집
+        const formData = new FormData(this);
+        
+        // 체크된 카테고리들 처리
+        const checkedCategories = document.querySelectorAll('input[name="categories"]:checked');
+        formData.delete('categories'); // 기존 카테고리 데이터 삭제
+        checkedCategories.forEach(checkbox => {
+            formData.append('categories', checkbox.value);
+        });
+        
+        // 폼 제출
+        fetch('/write', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => {
+            if (response.ok) {
+                window.location.href = '/project';
+            } else {
+                alert('프로젝트 등록에 실패했습니다.');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('프로젝트 등록 중 오류가 발생했습니다.');
+        });
+    });
+});
 </script>
 </body>
 </html>
