@@ -2,6 +2,7 @@ package com.portfolio.controller;
 
 import com.portfolio.dto.ProjectDto;
 import com.portfolio.entity.Project;
+import com.portfolio.repository.ProjectRepository;
 import com.portfolio.service.FileService;
 import com.portfolio.service.ProjectService;
 import com.portfolio.dto.ProjectImgDto;
@@ -22,17 +23,21 @@ public class ProjectController {
 
     private final ProjectService projectService;
     private final FileService fileService;
+    private final ProjectRepository projectRepository;
     @Value("${projectImgLocation}")
     private String uploadPath;
 
     @Autowired
-    public ProjectController(ProjectService projectService, FileService fileService) {
+    public ProjectController(ProjectService projectService, FileService fileService, ProjectRepository projectRepository) {
         this.projectService = projectService;
         this.fileService = fileService;
+        this.projectRepository = projectRepository;
     }
 
     @GetMapping("project")
-    public String list() {
+    public String list(Model model) {
+        List<Project> projects = projectRepository.findAll(); //프로젝트 리스트를 db에서 가져오기
+        model.addAttribute("projects", projects); //projects를 모델에 추가
         return "/projects/list";
     }
 
@@ -65,6 +70,7 @@ public class ProjectController {
                 String originalFilename = file.getOriginalFilename();
                 String savedFileName = fileService.uploadFile(uploadPath, originalFilename, file.getBytes());
                 String imageUrl = "/images/project/" + savedFileName;
+                
 
                 imgDto.setImgName(savedFileName);
                 imgDto.setOriImgName(originalFilename);
@@ -91,6 +97,7 @@ public class ProjectController {
 
         // 프로젝트 저장
         Project savedProject = projectService.writeProject(projectDto);
+
 
         return "redirect:/project";
     }

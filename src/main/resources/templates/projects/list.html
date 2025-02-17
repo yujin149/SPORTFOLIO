@@ -18,68 +18,141 @@
                 <li><a href="#tab6">상세페이지 & 이벤트페이지</a></li>
             </ul>
             <ul id="tab1" class="list active">
-                <li>
-                    <a href="#">
+                <li th:each="project : ${projects}"
+                    th:if="${project.categories.contains(T(com.portfolio.constant.ProjectCategoryStatus).ALL)}">
+
+                <a href="#">
                         <div class="imgWrap">
-                            <img src="https://picsum.photos/600/400"/>
+                            <img th:each="img : ${project.projectImgList}"
+                                 th:if="${img.imageType == T(com.portfolio.constant.ProjectImgStatus).MAINPAGE}"
+                                 th:src="@{${img.imgUrl}}"
+                                 alt="Main Image" />
+
                         </div>
                         <div class="textWrap">
                             <div class="txtBox">
-                                <p class="title">사이트 명이 들어갈 자리사이트 명이 들어갈 자리사이트 명이 들어갈 자리사이트 명이 들어갈 자리</p>
-                                <span class="view">136</span>
+                                <p class="title" th:text="${project.title}">사이트 명</p>
+                                <span class="view" th:text="${project.viewCount}">136</span>
                             </div>
-                            <p class="option">웹 개발</p>
+                            <p class="option" th:text="${#strings.listJoin(project.categories, ', ')}">웹 개발</p>
+
+
                         </div>
                     </a>
                 </li>
-                <li>
+
+            </ul>
+            <ul id="tab2" class="list">
+                <li th:each="project : ${projects}"
+                    th:if="${project.categories.contains(T(com.portfolio.constant.ProjectCategoryStatus).DEVELOPMENT)}">
                     <a href="#">
                         <div class="imgWrap">
-                            <img src="https://picsum.photos/600/400"/>
+                            <img th:each="img : ${project.projectImgList}"
+                                 th:if="${img.imageType == T(com.portfolio.constant.ProjectImgStatus).MAINPAGE}"
+                                 th:src="@{${img.imgUrl}}"
+                                 alt="Main Image" />
+
                         </div>
                         <div class="textWrap">
                             <div class="txtBox">
-                                <p class="title">사이트 명이 들어갈 자리사이트 명이 들어갈 자리사이트 명이 들어갈 자리사이트 명이 들어갈 자리</p>
-                                <span class="view">136</span>
+                                <p class="title" th:text="${project.title}">사이트 명이 들어갈 자리</p>
+                                <span class="view" th:text="${project.viewCount}">136</span>
                             </div>
-                            <p class="option">웹 개발</p>
+                            <p class="option" th:text="${#strings.listJoin(project.categories, ', ')}">웹 개발</p>
+
                         </div>
                     </a>
                 </li>
-                <li>
+
+            </ul>
+            <ul id="tab3" class="list">
+                <li th:each="project : ${projects}"
+                    th:if="${project.categories.contains(T(com.portfolio.constant.ProjectCategoryStatus).WEB)}">
                     <a href="#">
                         <div class="imgWrap">
-                            <img src="https://picsum.photos/600/400"/>
+                            <img th:each="img : ${project.projectImgList}"
+                                 th:if="${img.imageType == T(com.portfolio.constant.ProjectImgStatus).MAINPAGE}"
+                                 th:src="@{${img.imgUrl}}"
+                                 alt="Main Image" />
+
                         </div>
                         <div class="textWrap">
                             <div class="txtBox">
-                                <p class="title">사이트 명이 들어갈 자리사이트 명이 들어갈 자리사이트 명이 들어갈 자리사이트 명이 들어갈 자리</p>
-                                <span class="view">136</span>
+                                <p class="title" th:text="${project.title}">사이트 명이 들어갈 자리</p>
+                                <span class="view" th:text="${project.viewCount}">136</span>
                             </div>
-                            <p class="option">웹 & 모바일</p>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <div class="imgWrap">
-                            <img src="https://picsum.photos/600/400"/>
-                        </div>
-                        <div class="textWrap">
-                            <div class="txtBox">
-                                <p class="title">사이트 명이 들어갈 자리사이트 명이 들어갈 자리사이트 명이 들어갈 자리사이트 명이 들어갈 자리</p>
-                                <span class="view">136</span>
-                            </div>
-                            <p class="option">상세페이지 & 이벤트페이지</p>
+                            <p class="option" th:text="${#strings.listJoin(project.categories, ', ')}">웹 개발</p>
+
                         </div>
                     </a>
                 </li>
             </ul>
-            <ul id="tab2" class="list"></ul>
-            <ul id="tab3" class="list"></ul>
-            <ul id="tab4" class="list"></ul>
-            <ul id="tab5" class="list"></ul>
-            <ul id="tab6" class="list"></ul>
+            <ul id="tab4" class="list">
+                <li th:each="project : ${projects}"
+                    th:if="${project.categories.contains(T(com.portfolio.constant.ProjectCategoryStatus).REACTION)}">
+                    <a href="#">
+                        <div class="imgWrap">
+                            <img th:each="img : ${project.projectImgList}"
+                                 th:if="${img.imageType == T(com.portfolio.constant.ProjectImgStatus).MAINPAGE}"
+                                 th:src="@{${img.imgUrl}}"
+                                 alt="Main Image" />
+
+                        </div>
+                        <div class="textWrap">
+                            <div class="txtBox">
+                                <p class="title" th:text="${project.title}">사이트 명이 들어갈 자리</p>
+                                <span class="view" th:text="${project.viewCount}">136</span>
+                            </div>
+                            <p class="option" th:text="${#strings.listJoin(project.categories, ', ')}">웹 개발</p>
+
+                        </div>
+                    </a>
+                </li>
+            </ul>
+            <ul id="tab5" class="list">
+                <li th:each="project : ${projects}"
+                    th:if="${project.categories.contains(T(com.portfolio.constant.ProjectCategoryStatus).SNS)}">
+                    <a href="#">
+                        <div class="imgWrap">
+                            <img th:each="img : ${project.projectImgList}"
+                                 th:if="${img.imageType == T(com.portfolio.constant.ProjectImgStatus).MAINPAGE}"
+                                 th:src="@{${img.imgUrl}}"
+                                 alt="Main Image" />
+
+                        </div>
+                        <div class="textWrap">
+                            <div class="txtBox">
+                                <p class="title" th:text="${project.title}">사이트 명이 들어갈 자리</p>
+                                <span class="view" th:text="${project.viewCount}">136</span>
+                            </div>
+                            <p class="option" th:text="${#strings.listJoin(project.categories, ', ')}">웹 개발</p>
+
+                        </div>
+                    </a>
+                </li>
+            </ul>
+            <ul id="tab6" class="list">
+                <li th:each="project : ${projects}"
+                    th:if="${project.categories.contains(T(com.portfolio.constant.ProjectCategoryStatus).DETAIL)}">
+                    <a href="#">
+                        <div class="imgWrap">
+                            <img th:each="img : ${project.projectImgList}"
+                                 th:if="${img.imageType == T(com.portfolio.constant.ProjectImgStatus).MAINPAGE}"
+                                 th:src="@{${img.imgUrl}}"
+                                 alt="Main Image" />
+
+                        </div>
+                        <div class="textWrap">
+                            <div class="txtBox">
+                                <p class="title" th:text="${project.title}">사이트 명이 들어갈 자리</p>
+                                <span class="view" th:text="${project.viewCount}">136</span>
+                            </div>
+                            <p class="option" th:text="${#strings.listJoin(project.categories, ', ')}">웹 개발</p>
+
+                        </div>
+                    </a>
+                </li>
+            </ul>
         </div>
     </div>
 </div>>
