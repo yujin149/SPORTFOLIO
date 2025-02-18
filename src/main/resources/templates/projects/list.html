@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html
     layout:decorate="~{layouts/layout}"
-    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <body>
 <div layout:fragment="content">
-    <div class="writeBtnWrap">
-        <a href="/project/write" class="writeBtn"><span>상품 등록</span></a>
+    <div class="writeBtnWrap" sec:authorize="hasRole('ADMIN')">
+        <a href="/admin/project/write" class="writeBtn"><span>상품 등록</span></a>
     </div>
     <div class="contWrap projectWrap projListWrap">
         <div class="projectListWrap">

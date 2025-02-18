@@ -109,8 +109,11 @@ img{width:100%;}
 .footer .footerInner .copyright{ font-size:0.875rem; margin-top:5px;}
 
 
-
-
+/*header login부분 추가*/
+.headerWrap .headerLogin{display: flex; justify-content: flex-end; align-items: center;}
+.headerWrap .headerLogin .welcome{font-size:0.875rem; color:var(--small-color); margin-right:5px; }
+.headerWrap .headerLogin .welcome span{font-size:0.875rem; color:var(--bk-color); }
+.headerWrap .headerLogin .logoutBtn{width:70px; height:31px; border-radius: 5px; background:var(--bg-color); border:1px solid var(--gray-color); color:var(--bk-color);  margin-right:10px; display: flex; justify-content: center; align-items: center; cursor: pointer; font-size:0.875rem;}
 
 
 

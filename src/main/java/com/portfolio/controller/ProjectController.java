@@ -44,7 +44,7 @@ public class ProjectController {
         return "/projects/list";
     }
 
-    @GetMapping("project/write")
+    @GetMapping("admin/project/write")
     public String write(Model model) {
         // HTML 예시 텍스트 설정
         String htmlExample = "<span class=\"bold\">굵은 텍스트</span> 일반 텍스트 <span class=\"color\">색상 텍스트</span>";
@@ -58,7 +58,7 @@ public class ProjectController {
         
         return "/projects/write";
     }
-    @PostMapping("/write")
+    @PostMapping("/admin/write")
     public String writeProject(
         @ModelAttribute ProjectDto projectDto,
         @RequestParam("projectImgFile") List<MultipartFile> projectImgFiles) throws IOException {
@@ -186,7 +186,7 @@ public class ProjectController {
         return "/projects/detail";
     }
 
-    @GetMapping("/project/edit/{id}")
+    @GetMapping("/admin/project/edit/{id}")
     public String edit(@PathVariable("id") Long projectId, Model model) {
         Project project = projectService.getProjectById(projectId);
         
@@ -203,7 +203,7 @@ public class ProjectController {
         return "/projects/write";
     }
 
-    @PostMapping("/project/edit/{id}")
+    @PostMapping("/admin/project/edit/{id}")
     public String updateProject(
         @PathVariable("id") Long projectId,
         @ModelAttribute ProjectDto projectDto,

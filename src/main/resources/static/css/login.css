@@ -1,0 +1,7 @@
+.loginBody{background:var(--bg-color); width:100vh; height:100vh;}
+.loginWrap{position:fixed; top:50%; left:50%; transform: translate(-50%, -50%); background:var(--white-color); border-radius: 10px; border:1px solid var(--gray-color); box-shadow: var(--box-shadow); padding:40px;}
+.loginWrap .tit{color:var(--bk-color); text-align: center; font-size:2.5rem; font-weight:700; margin-bottom:30px;}
+.loginWrap .loginBox li{margin-bottom:10px;}
+.loginWrap .loginBox input{width:400px; height:50px; border:1px solid var(--gray-color); border-radius: 10px; padding: 0 10px; outline: none;}
+.loginWrap .btnWrap button{width:400px; height:50px; border-radius: 10px; background:var(--bk-color); color:var(--white-color); font-weight:700; border:none; outline: none; cursor: pointer;}
+.loginWrap .btnWrap button:hover{background:var(--main-color);}

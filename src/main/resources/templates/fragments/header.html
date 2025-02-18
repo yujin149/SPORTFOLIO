@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
     <meta charset="UTF-8">
@@ -14,6 +15,19 @@
         <div class="headerInner">
             <h1 class="logo"><a href="/"><img th:src="@{/images/logo.png}" alt="SPORTFOLIO"></a></h1>
             <div class="headerBtn">
+                <!-- 로그인/로그아웃 상태에 따른 버튼 표시 -->
+                <!--<th:block sec:authorize="isAnonymous()">
+                    <a href="/login" class="loginBtn">로그인</a>
+                </th:block>-->
+                <div class="headerLogin">
+                <th:block sec:authorize="isAuthenticated()">
+                    <p class="welcome"><span sec:authentication="principal.username"></span>님 환영합니다</p>
+                    <form th:action="@{/logout}" method="post" style="display: inline;">
+                        <button type="submit" class="logoutBtn">로그아웃</button>
+                    </form>
+                </th:block>
+                </div>
+
                 <form class="searchWrap" action="/search" method="get">
                     <input type="text" placeholder="검색어를 입력해주세요." id="headerSearchInput" name="keyword">
                     <input type="hidden" name="category" value="ALL">
@@ -21,6 +35,9 @@
                         <img th:src="@{/images/search.png}" alt="검색">
                     </button>
                 </form>
+                
+
+                
                 <a href="#" class="menuBtn">메뉴</a>
             </div>
         </div>

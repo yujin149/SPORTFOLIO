@@ -9,7 +9,7 @@
             <p class="title" th:text="${isEdit ? '프로젝트 수정' : '프로젝트 등록'}">프로젝트 등록</p>
         </div>
         <div class="writeWrap">
-            <form th:action="${isEdit ? '/project/edit/' + project.id : '/write'}" method="post" enctype="multipart/form-data">
+            <form th:action="${isEdit ? '/admin/project/edit/' + project.id : '/admin/write'}" method="post" enctype="multipart/form-data">
                 <ul class="listBox">
                     <li class="list01 list">
                         <p class="tit">프로젝트명</p>
@@ -213,6 +213,7 @@
                 </ul>
 
                 <div class="btnWrap">
+                    <a href="/project" class="listBtn">목록</a>
                     <button type="submit" th:text="${isEdit ? '수정' : '등록'}">등록</button>
                 </div>
             </form>

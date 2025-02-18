@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html
+    layout:decorate="~{layouts/detailLayout}"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+
+<body class="loginBody">
+<div layout:fragment="content">
+  <div class="loginWrap">
+      <h3 class="tit">LOGIN</h3>
+      <form action="/login" method="post" class="loginBox">
+        <ul>
+          <li>
+            <input type="text" name="username" placeholder="아이디를 입력해주세요.">
+          </li>
+          <li>
+            <input type="password" name="password" placeholder="비밀번호를 입력해주세요.">
+          </li>
+        </ul>
+        <div class="btnWrap">
+          <button type="submit">로그인</button>
+        </div>
+        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+      </form>
+  </div>
+</div>
+
+
+</body>
+</html>
