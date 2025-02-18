@@ -70,7 +70,7 @@ public class ProjectController {
                 String originalFilename = file.getOriginalFilename();
                 String savedFileName = fileService.uploadFile(uploadPath, originalFilename, file.getBytes());
                 String imageUrl = "/images/projectImg/" + savedFileName;
-                
+
 
                 imgDto.setImgName(savedFileName);
                 imgDto.setOriImgName(originalFilename);

@@ -8,6 +8,7 @@ import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Getter
 @Setter
@@ -29,5 +30,12 @@ public class ProjectDto {
     public ProjectDto() {
         this.categories = new ArrayList<>();
         this.projectImgList = new ArrayList<>();
+    }
+
+    //카테고리 목록을 DisplayName으로 변환
+    public String getCategoriesDisplayNames() {
+        return categories.stream()
+                .map(ProjectCategoryStatus::getDisplayName)
+                .collect(Collectors.joining(", "));
     }
 }

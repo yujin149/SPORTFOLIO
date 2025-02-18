@@ -34,7 +34,7 @@
                                 <p class="title" th:text="${project.title}">사이트 명</p>
                                 <span class="view" th:text="${project.viewCount}">136</span>
                             </div>
-                            <p class="option" th:text="${#strings.listJoin(project.categories, ', ')}">웹 개발</p>
+                            <p class="option" th:text="${project.getCategoriesDisplayNames()}">웹 개발</p>
 
 
                         </div>
@@ -58,7 +58,7 @@
                                 <p class="title" th:text="${project.title}">사이트 명이 들어갈 자리</p>
                                 <span class="view" th:text="${project.viewCount}">136</span>
                             </div>
-                            <p class="option" th:text="${#strings.listJoin(project.categories, ', ')}">웹 개발</p>
+                            <p class="option" th:text="${project.getCategoriesDisplayNames()}">웹 개발</p>
 
                         </div>
                     </a>
@@ -81,7 +81,7 @@
                                 <p class="title" th:text="${project.title}">사이트 명이 들어갈 자리</p>
                                 <span class="view" th:text="${project.viewCount}">136</span>
                             </div>
-                            <p class="option" th:text="${#strings.listJoin(project.categories, ', ')}">웹 개발</p>
+                            <p class="option" th:text="${project.getCategoriesDisplayNames()}">웹 개발</p>
 
                         </div>
                     </a>
@@ -103,7 +103,7 @@
                                 <p class="title" th:text="${project.title}">사이트 명이 들어갈 자리</p>
                                 <span class="view" th:text="${project.viewCount}">136</span>
                             </div>
-                            <p class="option" th:text="${#strings.listJoin(project.categories, ', ')}">웹 개발</p>
+                            <p class="option" th:text="${project.getCategoriesDisplayNames()}">웹 개발</p>
 
                         </div>
                     </a>
@@ -125,7 +125,7 @@
                                 <p class="title" th:text="${project.title}">사이트 명이 들어갈 자리</p>
                                 <span class="view" th:text="${project.viewCount}">136</span>
                             </div>
-                            <p class="option" th:text="${#strings.listJoin(project.categories, ', ')}">웹 개발</p>
+                            <p class="option" th:text="${project.getCategoriesDisplayNames()}">웹 개발</p>
 
                         </div>
                     </a>
@@ -147,7 +147,7 @@
                                 <p class="title" th:text="${project.title}">사이트 명이 들어갈 자리</p>
                                 <span class="view" th:text="${project.viewCount}">136</span>
                             </div>
-                            <p class="option" th:text="${#strings.listJoin(project.categories, ', ')}">웹 개발</p>
+                            <p class="option" th:text="${project.getCategoriesDisplayNames()}">웹 개발</p>
 
                         </div>
                     </a>

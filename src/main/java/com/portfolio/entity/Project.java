@@ -9,6 +9,7 @@ import lombok.ToString;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Entity
 @Getter
@@ -61,4 +62,11 @@ public class Project extends BaseEntity {
 
     @Column(name = "project_view", columnDefinition = "integer default 0")
     private Integer viewCount = 0;
+
+    //카테고리 목록을 DisplayName으로 변환
+    public String getCategoriesDisplayNames() {
+        return categories.stream()
+                .map(ProjectCategoryStatus::getDisplayName)
+                .collect(Collectors.joining(", "));
+    }
 }
