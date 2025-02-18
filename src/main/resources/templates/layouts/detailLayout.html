@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <!--    <meta name="_csrf" th:content="${_csrf.token}"/>-->
+    <!--    <meta name="_csrf_header" th:content="${_csrf.headerName}"/>-->
+    <title>SPORTFOLIO</title>
+    <!--폰트 cdn-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200..1000&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <!--swiper-->
+    <link rel="stylesheet"  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <link rel="stylesheet" th:href="@{/css/common.css}">
+    <link rel="stylesheet" th:href="@{/css/layout.css}">
+    <link rel="stylesheet" th:href="@{/css/main.css}">
+    <link rel="stylesheet" th:href="@{/css/project.css}">
+    <link rel="stylesheet" th:href="@{/css/inquiry.css}">
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <!--swiper-->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <script th:src="@{/js/header.js}"></script>
+    <script th:src="@{/js/main.js}"></script>
+    <script th:src="@{/js/inquiry.js}"></script>
+
+    <th:block layout:fragment="script"></th:block>
+    <th:block layout:fragment="css"></th:block>
+
+</head>
+<body>
+
+
+<div class="content" layout:fragment="content">
+
+</div>
+
+
+
+
+</body>
+</html>

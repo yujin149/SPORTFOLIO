@@ -8,6 +8,7 @@ public enum ProjectImgStatus {
     SUBPAGE2("SUB PAGE"),
     DETAIL1("DETAIL PAGE"),
     DETAIL2("DETAIL PAGE"),
+    DETAIL3("DETAIL PAGE"),
     ETC("ETC");
 
     private final String description;

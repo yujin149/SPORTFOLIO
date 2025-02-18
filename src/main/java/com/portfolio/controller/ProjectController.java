@@ -85,6 +85,7 @@ public class ProjectController {
                     case 4 -> ProjectImgStatus.SUBPAGE2;
                     case 5 -> ProjectImgStatus.DETAIL1;
                     case 6 -> ProjectImgStatus.DETAIL2;
+                    case 7 -> ProjectImgStatus.DETAIL3;
                     default -> ProjectImgStatus.ETC;
                 };
                 imgDto.setImageType(imageType);
@@ -102,5 +103,11 @@ public class ProjectController {
         return "redirect:/project";
     }
 
+
+    //뷰페이지
+    @GetMapping(value = "/project/detail")
+    public String detail(Model model) {
+        return "/projects/detail";
+    }
 
 }

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html
+    layout:decorate="~{layouts/detailLayout}"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<body>
+<div layout:fragment="content">
+    <div class="detailWrap">
+       <div class="projectIntro">
+           <h3 class="title">프로젝트 명  + WEB SITE</h3>
+           <img src="https://picsum.photos/800/800" alt="미리보기 이미지">
+           <a href="#" target="_blank"  class="project_btn site_btn">사이트 바로가기 +</a>
+           <a href="/project" class="listBtn">포트폴리오 리스트</a>
+       </div>
+
+
+        <div class="conceptBox">
+            <h3><span class="pink">D</span>ESIGN CONCEPT</h3>
+            <p class="text">
+                프로젝트 컨셉 내용이 들어갈 예정입니다.<br>
+                textarea의 name이 concept인 내용이 들어갑니다.
+            </p>
+
+            <p class="participation">프로젝트 참여도가 들어갑니다. textarea의 name이  part인 내용이 들어갑니다.</p>
+        </div>
+
+        <div class="mainPageWrap baGray">
+            <h3><span class="pink">M</span>AIN PAGE</h3>
+            <div class="mainPageImg projPage">
+                <img src="https://picsum.photos/800/800" alt="MAINPAGE">
+            </div>
+        </div>
+
+        <div class="subPageWrap">
+            <h3><span class="pink">S</span>UB PAGE</h3>
+            <ul class="subpageImg projPage">
+                <li><img src="https://picsum.photos/400/1200" alt="SUBPAGE1"></li>
+                <li><img src="https://picsum.photos/800/1200" alt="SUBPAGE2"></li>
+            </ul>
+        </div>
+
+        <div class="detailWrap">
+            <h3><span class="pink">P</span>RODUCT DETAIL PAGE</h3>
+            <ul class="detailImg projPage">
+                <li><img src="https://picsum.photos/600/1200" alt="DETAIL1"></li>
+                <li><img src="https://picsum.photos/500/1200" alt="DETAIL2"></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
