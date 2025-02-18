@@ -39,12 +39,13 @@
             </ul>
         </div>
 
-        <div class="detailBox bgGray">
+        <div class="detailBox bgGray" 
+             th:if="${detail1Url != '' || detail2Url != '' || detail3Url != ''}">
             <h3><span class="pink">E</span>TC DETAIL PAGE</h3>
             <ul class="detailImg projPage">
-                <li><img th:src="${detail1Url}" alt="DETAIL1"></li>
-                <li><img th:src="${detail2Url}" alt="DETAIL2"></li>
-                <li><img th:src="${detail3Url}" alt="DETAIL3"></li>
+                <li th:if="${detail1Url != ''}"><img th:src="${detail1Url}" alt="DETAIL1"></li>
+                <li th:if="${detail2Url != ''}"><img th:src="${detail2Url}" alt="DETAIL2"></li>
+                <li th:if="${detail3Url != ''}"><img th:src="${detail3Url}" alt="DETAIL3"></li>
             </ul>
         </div>
     </div>

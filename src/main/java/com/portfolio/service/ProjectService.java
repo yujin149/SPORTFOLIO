@@ -91,8 +91,14 @@ public class ProjectService {
     }
 
     public Project getProjectById(Long projectId) {
-        return projectRepository.findById(projectId)
+        Project project = projectRepository.findById(projectId)
                 .orElseThrow(() -> new RuntimeException("Project not found"));
+        
+        // 조회수 증가
+        project.incrementViewCount();
+        projectRepository.save(project);
+        
+        return project;
     }
 
     public Project updateProject(Long projectId, ProjectDto projectDto) {

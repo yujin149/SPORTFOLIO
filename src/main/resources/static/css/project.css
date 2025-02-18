@@ -60,12 +60,12 @@
 .detailWrap01 .mainPageWrap{margin-top:6.25rem;}
 .detailWrap01 .mainPageWrap img{max-width: 1400px; width:94%; border:1px solid var(--gray-color); box-shadow: var(--box-shadow);}
 
-.detailWrap01 .subPageWrap{margin-top:6.25rem;}
+.detailWrap01 .subPageWrap{margin:6.25rem 0; }
 .detailWrap01 .projPage{display: flex; justify-content: space-between; align-items: flex-start; gap:10px; max-width:1400px; width:94%; margin:auto;}
 .detailWrap01 .subPageWrap .subPageImg li{width:50%;}
 .detailWrap01 .subPageWrap .subPageImg li img{border:1px solid var(--gray-color); box-shadow: var(--box-shadow);}
 
-.detailWrap01 .detailBox{margin-top:6.25rem;}
+
 .detailWrap01 .detailBox .detailImg li{width:33.33%;}
 .detailWrap01 .detailBox .detailImg li img{border:1px solid var(--gray-color); box-shadow: var(--box-shadow);}
 
