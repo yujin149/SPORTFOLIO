@@ -5,6 +5,7 @@ import com.portfolio.constant.ProjectCategoryStatus;
 import com.portfolio.dto.ProjectImgDto;
 import lombok.Getter;
 import lombok.Setter;
+import com.portfolio.constant.ProjectStatus;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,11 +26,13 @@ public class ProjectDto {
     private List<ProjectCategoryStatus> categories; //카테고리 목록
     private List<ProjectImgDto> projectImgList; //이미지 목록 (ProjectImgDto 형태로 변환)
     private Integer viewCount;
+    private ProjectStatus projectStatus;
 
 
     public ProjectDto() {
         this.categories = new ArrayList<>();
         this.projectImgList = new ArrayList<>();
+        this.projectStatus = ProjectStatus.GENERAL;
     }
 
     //카테고리 목록을 DisplayName으로 변환

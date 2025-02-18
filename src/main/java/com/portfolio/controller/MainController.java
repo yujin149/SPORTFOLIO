@@ -20,8 +20,11 @@ public class MainController {
 
     @GetMapping("/")
     public String main(Model model) {
-        List<Project> projects = projectService.getProjects();  // 프로젝트 리스트를 가져옴
-        model.addAttribute("projects", projects);  // 모델에 추가
+        List<Project> projects = projectService.getProjects();  // 모든 프로젝트 리스트를 가져옴
+        List<Project> noticeProjects = projectService.getNoticeProjects(); // NOTICE 상태의 프로젝트만 가져옴
+        
+        model.addAttribute("projects", projects);  // 모든 프로젝트
+        model.addAttribute("noticeProjects", noticeProjects);  // NOTICE 프로젝트
         return "main";
     }
 }

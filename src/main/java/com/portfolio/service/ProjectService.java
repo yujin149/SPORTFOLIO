@@ -16,6 +16,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.List;
+import com.portfolio.constant.ProjectStatus;
 
 @Service
 public class ProjectService {
@@ -34,6 +35,7 @@ public class ProjectService {
     public Project writeProject(ProjectDto projectDto) {
         // ProjectDto를 Project 엔티티로 변환
         Project project = new Project();
+        project.setProjectStatus(projectDto.getProjectStatus());
         project.setTitle(projectDto.getTitle());
         project.setClient(projectDto.getClient());
         project.setType(projectDto.getType());
@@ -82,6 +84,10 @@ public class ProjectService {
     //리스트 가져오기
     public List<Project> getProjects() {
         return projectRepository.findAllByOrderByRegTimeDesc();
+    }
+
+    public List<Project> getNoticeProjects() {
+        return projectRepository.findByProjectStatusOrderByRegTimeDesc(ProjectStatus.NOTICE);
     }
 
 }
