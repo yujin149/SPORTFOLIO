@@ -21,17 +21,14 @@ public class ProjectService {
 
     private final ProjectRepository projectRepository;
     private final ProjectImgRepository projectImgRepository;
+    private final FileService fileService;
 
-    @Value("${uploadPath}")
-    private String uploadPath;
-
-    @Value("${projectImgLocation}")
-    private String projectImgLocation;
 
     @Autowired
-    public ProjectService(ProjectRepository projectRepository, ProjectImgRepository projectImgRepository) {
+    public ProjectService(ProjectRepository projectRepository, ProjectImgRepository projectImgRepository, FileService fileService) {
         this.projectRepository = projectRepository;
         this.projectImgRepository = projectImgRepository;
+        this.fileService = fileService;
     }
 
     // 프로젝트 등록
@@ -60,11 +57,9 @@ public class ProjectService {
             projectImg.setImgUrl(projectImgDto.getImgUrl());
             projectImg.setImageType(projectImgDto.getImageType());
 
-            // 이미지를 정적 리소스 경로에도 복사
+            // 이미지를 정적 리소스 경로로 복사
             try {
-                Path sourcePath = Paths.get(projectImgLocation, projectImgDto.getImgName());
-                Path targetPath = Paths.get(uploadPath, projectImgDto.getImgName());
-                Files.copy(sourcePath, targetPath, StandardCopyOption.REPLACE_EXISTING);
+                fileService.copyToStaticResource(projectImgDto.getImgName());
             } catch (IOException e) {
                 throw new RuntimeException("Failed to copy image to static resource location", e);
             }

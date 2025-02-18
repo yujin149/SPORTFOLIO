@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.UUID;
 
 @Service
@@ -17,6 +18,9 @@ import java.util.UUID;
 public class FileService {
     @Value("${projectImgLocation}") // application.properties에서 경로를 주입받음
     private String uploadPath;
+
+    @Value("${uploadPath}")  // 추가: 정적 리소스 경로
+    private String staticResourcePath;
 
     // 파일 업로드
     public String uploadFile(String uploadPath, String originalFileName, byte[] fileData) throws Exception {
@@ -36,6 +40,15 @@ public class FileService {
         }
 
         return savedFileName; // 저장된 파일 이름 반환
+    }
+
+    // 이미지 파일을 정적 리소스 경로로 복사
+    public void copyToStaticResource(String savedFileName) throws IOException {
+        // 정적 리소스 경로로 복사
+        Path sourcePath = Paths.get(uploadPath, savedFileName);
+        Path targetPath = Paths.get(staticResourcePath, savedFileName);
+
+        Files.copy(sourcePath, targetPath, StandardCopyOption.REPLACE_EXISTING);
     }
 
     // 파일 삭제
