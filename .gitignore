@@ -36,4 +36,5 @@ mvnw
 mvnw.cmd
 pom.xml
 **/application.properties
+**/projectImg/**
 
