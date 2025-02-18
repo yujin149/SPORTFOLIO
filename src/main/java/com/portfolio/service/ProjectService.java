@@ -15,6 +15,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.util.List;
 
 @Service
 public class ProjectService {
@@ -23,8 +24,6 @@ public class ProjectService {
     private final ProjectImgRepository projectImgRepository;
     private final FileService fileService;
 
-
-    @Autowired
     public ProjectService(ProjectRepository projectRepository, ProjectImgRepository projectImgRepository, FileService fileService) {
         this.projectRepository = projectRepository;
         this.projectImgRepository = projectImgRepository;
@@ -78,6 +77,11 @@ public class ProjectService {
         // XSS 방지를 위한 기본적인 검증이 필요할 수 있습니다.
         // 여기서는 간단히 허용된 태그만 통과시키는 예시를 들겠습니다.
         return content.replaceAll("(?i)<(?!/?span)[^>]*>", ""); // span 태그만 허용
+    }
+
+    //리스트 가져오기
+    public List<Project> getProjects() {
+        return projectRepository.findAllByOrderByRegTimeDesc();
     }
 
 }

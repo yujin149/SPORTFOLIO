@@ -36,7 +36,7 @@ public class ProjectController {
 
     @GetMapping("project")
     public String list(Model model) {
-        List<Project> projects = projectRepository.findAll(); //프로젝트 리스트를 db에서 가져오기
+        List<Project> projects = projectService.getProjects();  //프로젝트 리스트를 최신순으로 가져오기
         model.addAttribute("projects", projects); //projects를 모델에 추가
         return "/projects/list";
     }
