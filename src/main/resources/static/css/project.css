@@ -1,10 +1,10 @@
 /*리스트 list.html*/
 .projectWrap{margin:calc(66px + 2.5rem) auto 2.5rem; min-height: calc(100vh - 328px);}
-.writeBtnWrap{position:fixed; bottom:calc(152px + 70px); right:3%;}
-.writeBtnWrap a{display:flex; justify-content: center; align-items: center; width:60px; height:60px; border-radius: 50%; background:var(--main-color); }
+.writeBtnWrap{position:fixed; bottom:217px; right:3%;}
+.writeBtnWrap a{display:flex; justify-content: center; align-items: center; width:50px; height:50px; border-radius: 5px; background:var(--bk-color); }
 .writeBtnWrap a span{font-size:0;}
-.writeBtnWrap a span:before{content:''; display: block; width:24px; height:2px; border-radius: 2px; background:var(--white-color); position:absolute;top:50%; left:50%; transform:translate(-50%, -50%);}
-.writeBtnWrap a span:after{content:''; display: block; width:2px; height:24px; border-radius: 2px; background:var(--white-color);position:absolute;top:50%; left:50%; transform:translate(-50%, -50%);}
+.writeBtnWrap a span:before{content:''; display: block; width:20px; height:2px; border-radius: 2px; background:var(--white-color); position:absolute;top:50%; left:50%; transform:translate(-50%, -50%);}
+.writeBtnWrap a span:after{content:''; display: block; width:2px; height:20px; border-radius: 2px; background:var(--white-color);position:absolute;top:50%; left:50%; transform:translate(-50%, -50%);}
 .writeBtnWrap a:hover span:before{transform:rotate(180deg) translate(50%, 50%); transition: all .3s;}
 .writeBtnWrap a:hover span:after{transform:rotate(180deg) translate(50%, 50%); transition: all .3s;}
 

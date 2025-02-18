@@ -45,3 +45,8 @@ textarea{border:1px solid var(--gray-color); border-radius: 5px; outline: none; 
 .pagingWrap .pagination li a.pageBtn img{width:18px;}
 .pagingWrap .pagination li a.num{padding:10px;}
 .pagingWrap .pagination li a.on{color:var(--main-color);}
+
+
+/*TOP버튼*/
+#scrollUp {bottom:157px; right:3%; width:50px; height:50px; display:block; position: fixed; background:var(--main-color) url("/images/topBtn.png")no-repeat; background-size:28px; background-position:center; font-size:0; border-radius: 5px;}
+/*#scrollUp:hover {background:var(--main-color) url("/images/topBtn.png")no-repeat;background-size:28px; background-position:center; }*/
