@@ -30,8 +30,8 @@ img{width:100%;}
 .mainProjectSwiper{ position:relative; padding:0 23px;}
 .mainProjectWrap .projectList{display: flex; justify-content: flex-start; align-items: flex-start; }
 .mainProjectWrap .projectList li{width:calc(33.33% - 16px);}
-.mainProjectWrap .projectList li .imgWrap{border:1px solid var(--gray-color); border-radius: 12px; overflow:hidden; width:100%; height:0; padding-bottom:60%; position:relative;}
-.mainProjectWrap .projectList li .imgWrap img{position:absolute; top:0; left:0; object-fit: cover;}
+.mainProjectWrap .projectList li .imgWrap{border:1px solid var(--gray-color); border-radius: 12px; overflow:hidden; width:100%; height:0; padding-bottom:100%; position:relative;}
+.mainProjectWrap .projectList li .imgWrap img{position:absolute; top:0; left:0; object-fit: cover; width:100%; min-height:100%;}
 .mainProjectWrap .projectList li .textWrap{margin-top:10px;}
 .mainProjectWrap .projectList li .textWrap .txtBox{display: flex; justify-content: space-between; align-items: center;}
 .mainProjectWrap .projectList li .textWrap .title{font-size:1.0625rem; color:var(--bk-color); font-weight:700; margin-bottom: 2px; width:calc(100% - 70px); display: block; text-overflow: ellipsis; text-wrap: nowrap; overflow: hidden;}
@@ -75,8 +75,8 @@ img{width:100%;}
 .projectListWrap .list{display: none; justify-content: flex-start; align-items: flex-start; flex-wrap:wrap; gap:40px 24px;}
 .projectListWrap .list.active{display: flex;}
 .projectListWrap .list li{width:calc(33.33% - 16px);}
-.projectListWrap .list li .imgWrap{border:1px solid var(--gray-color); border-radius: 12px; width:100%; padding-bottom:60%; height:0; position:relative; overflow: hidden;}
-.projectListWrap .list li .imgWrap img{position: absolute;top:0; left:0; object-fit: cover;}
+.projectListWrap .list li .imgWrap{border:1px solid var(--gray-color); border-radius: 12px; width:100%; padding-bottom:100%; height:0; position:relative; overflow: hidden;}
+.projectListWrap .list li .imgWrap img{position: absolute;top:0; left:0; object-fit: cover; width:100%; min-height:100%;}
 
 .projectListWrap li .textWrap{margin-top:10px;}
 .projectListWrap li .textWrap .txtBox{display: flex; justify-content: space-between; align-items: center;}

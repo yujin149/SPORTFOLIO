@@ -35,16 +35,67 @@
 .projWriteWrap .writeWrap .btnWrap button{display: flex; justify-content: center; align-items: center; border-radius: 10px; height:50px; width:220px; background: var(--main-color); color:var(--white-color); border:none; outline: none; cursor:pointer;}
 
 
+/*상세페이지 웹*/
+.detailWrap01{width:100%;}
+.detailWrap01 .projectIntro{width:100%; height:100vh; margin:0 auto; position:relative; text-align: center;}
+.detailWrap01 .projectIntro h3{font-size:3.75rem; color:var(--white-color); font-weight:700; padding-top:15.625rem;}
+.detailWrap01 .projectIntro img{margin-top:2.5rem; width:auto; max-width:1580px;}
+.detailWrap .btnWrap{display: flex; justify-content: flex-end; align-items: center;  position:absolute; top:50px; right:50px; }
+.detailWrap .btnWrap a{width:200px; display: flex; justify-content: center; align-items: center; height:45px; border-radius: 45px; font-weight:500;}
+.detailWrap01 .projectIntro .btnWrap .siteBtn{background:var(--main-color); color:var(--white-color); margin-right:10px;}
+.detailWrap01 .projectIntro .btnWrap .listBtn{background:var(--white-color); color:var(--bk-color); }
 
 
+.detailWrap01 > div{ text-align: center;}
+.detailWrap01 .conceptBox{margin-top:20.5rem;}
+.detailWrap01 h3{font-size:3.125rem; font-weight:700; color:var(--bk-color); margin-bottom:1.875rem;}
+.detailWrap01 h3 .pink{color:var(--main-color);}
+.detailWrap01 p{color:var(--text-color); font-weight:400; line-height: 1.4;}
+.detailWrap01 p .bold{font-weight:600;}
+.detailWrap01 p .color{color:var(--bk-color);}
 
+.detailWrap01 .conceptBox p.participation{color:var(--small-color); margin-top:1.875rem;}
 
+.detailWrap01 .bgGray{background:var(--bg-color); padding:6.25rem;}
+.detailWrap01 .mainPageWrap{margin-top:6.25rem;}
+.detailWrap01 .mainPageWrap img{max-width: 1400px; width:94%; border:1px solid var(--gray-color); box-shadow: var(--box-shadow);}
 
+.detailWrap01 .subPageWrap{margin-top:6.25rem;}
+.detailWrap01 .projPage{display: flex; justify-content: space-between; align-items: flex-start; gap:10px; max-width:1400px; width:94%; margin:auto;}
+.detailWrap01 .subPageWrap .subPageImg li{width:50%;}
+.detailWrap01 .subPageWrap .subPageImg li img{border:1px solid var(--gray-color); box-shadow: var(--box-shadow);}
 
+.detailWrap01 .detailBox{margin-top:6.25rem;}
+.detailWrap01 .detailBox .detailImg li{width:33.33%;}
+.detailWrap01 .detailBox .detailImg li img{border:1px solid var(--gray-color); box-shadow: var(--box-shadow);}
 
+/*상세페이지 그래픽*/
+.detailWrap02{width:100%; min-height: 100vh; position:relative;padding:6.25rem 0; display: none;}
+.detailWrap02 .detailInner{max-width:1080px; width:94%; margin:0 auto;}
+.detailWrap02 h3{font-size:1.875rem; font-weight:700; color:var(--bk-color); margin-bottom:0.9375rem;}
+.detailWrap02 h3 .pink{color:var(--main-color);}
+.detailWrap02 p{color:var(--text-color); font-weight:400; line-height: 1.4;}
+.detailWrap02 p .bold{font-weight:600;}
+.detailWrap02 p .color{color:var(--bk-color);}
+.detailWrap02 .textWarp{text-align: center;}
+.detailWrap02 .textWarp .info{display: flex; justify-content: center; align-items: center;}
+.detailWrap02 .textWarp .info li{display: flex; justify-content: flex-start; align-items: center;margin-right:10px;}
+.detailWrap02 .textWarp .info li:last-child{margin-right:0;}
+.detailWrap02 .textWarp .info li:after{content:''; display: block; width:1px; height:10px; background:var(--gray-color); margin-left:10px; }
+.detailWrap02 .textWarp .info li:last-child:after{display: none;}
+.detailWrap02 .textWarp .info li p{color:var(--small-color);}
+.detailWrap02 .textWarp .info li p.tit:after{display: inline-block; content:':'; color:var(--small-color); margin:0 3px; font-weight:400;}
 
+.detailWrap02 .textWarp .detailText {margin-top:0.9375rem;}
 
+.detailWrap02 .imgWrap{margin-top:2.5rem; text-align: center;}
+.detailWrap02 .imgWrap img{width:auto; max-width:100%; border:1px solid
+var(--gray-color); box-shadow: var(--box-shadow);}
 
+.detailWrap02 .btnWrap .listBtn{background:var(--main-color); color:var(--white-color); margin-right:10px;}
+
+.detailWrap .btnWrap .updateBtn{width:100px; background:var(--bk-color); margin-right:10px; color:var(--white-color);}
+.detailWrap .btnWrap .deleteBtn{width:100px; background:var(--bk-color);margin-right:10px;color:var(--white-color);}
 
 
 

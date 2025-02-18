@@ -7,12 +7,14 @@ import com.portfolio.service.FileService;
 import com.portfolio.service.ProjectService;
 import com.portfolio.dto.ProjectImgDto;
 import com.portfolio.constant.ProjectImgStatus;
+import com.portfolio.constant.ProjectCategoryStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import com.portfolio.entity.ProjectImg;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -105,8 +107,78 @@ public class ProjectController {
 
 
     //뷰페이지
-    @GetMapping(value = "/project/detail")
-    public String detail(Model model) {
+    @GetMapping(value = "/project/detail/{id}")
+    public String detail(@PathVariable("id") Long projectId, Model model) {
+        Project project = projectService.getProjectById(projectId);
+        boolean isWebType = !(project.getCategories().contains(ProjectCategoryStatus.SNS) 
+                           || project.getCategories().contains(ProjectCategoryStatus.DETAIL));
+        
+        // 각 이미지 타입별로 URL 찾기
+        String mainBannerUrl = project.getProjectImgList().stream()
+                .filter(img -> img.getImageType() == ProjectImgStatus.MAINBANNER)
+                .map(ProjectImg::getImgUrl)
+                .findFirst()
+                .orElse("");
+                
+        String previewUrl = project.getProjectImgList().stream()
+                .filter(img -> img.getImageType() == ProjectImgStatus.PREVIEW)
+                .map(ProjectImg::getImgUrl)
+                .findFirst()
+                .orElse("");
+                
+        String mainPageUrl = project.getProjectImgList().stream()
+                .filter(img -> img.getImageType() == ProjectImgStatus.MAINPAGE)
+                .map(ProjectImg::getImgUrl)
+                .findFirst()
+                .orElse("");
+                
+        String subPage1Url = project.getProjectImgList().stream()
+                .filter(img -> img.getImageType() == ProjectImgStatus.SUBPAGE1)
+                .map(ProjectImg::getImgUrl)
+                .findFirst()
+                .orElse("");
+                
+        String subPage2Url = project.getProjectImgList().stream()
+                .filter(img -> img.getImageType() == ProjectImgStatus.SUBPAGE2)
+                .map(ProjectImg::getImgUrl)
+                .findFirst()
+                .orElse("");
+                
+        String detail1Url = project.getProjectImgList().stream()
+                .filter(img -> img.getImageType() == ProjectImgStatus.DETAIL1)
+                .map(ProjectImg::getImgUrl)
+                .findFirst()
+                .orElse("");
+                
+        String detail2Url = project.getProjectImgList().stream()
+                .filter(img -> img.getImageType() == ProjectImgStatus.DETAIL2)
+                .map(ProjectImg::getImgUrl)
+                .findFirst()
+                .orElse("");
+                
+        String detail3Url = project.getProjectImgList().stream()
+                .filter(img -> img.getImageType() == ProjectImgStatus.DETAIL3)
+                .map(ProjectImg::getImgUrl)
+                .findFirst()
+                .orElse("");
+        String etcUrl = project.getProjectImgList().stream()
+                .filter(img -> img.getImageType() == ProjectImgStatus.ETC)
+                .map(ProjectImg::getImgUrl)
+                .findFirst()
+                .orElse("");
+        
+        model.addAttribute("project", project);
+        model.addAttribute("isWebType", isWebType);
+        model.addAttribute("mainBannerUrl", mainBannerUrl);
+        model.addAttribute("previewUrl", previewUrl);
+        model.addAttribute("mainPageUrl", mainPageUrl);
+        model.addAttribute("subPage1Url", subPage1Url);
+        model.addAttribute("subPage2Url", subPage2Url);
+        model.addAttribute("detail1Url", detail1Url);
+        model.addAttribute("detail2Url", detail2Url);
+        model.addAttribute("detail3Url", detail3Url);
+        model.addAttribute("etcUrl", etcUrl);
+        
         return "/projects/detail";
     }
 

@@ -10,7 +10,7 @@
         <div class="swiper mainProjectSwiper">
             <ul class="projectList swiper-wrapper">
                 <li class="swiper-slide" th:each="project : ${noticeProjects}">
-                    <a href="#">
+                    <a th:href="@{/project/detail/{id}(id=${project.id})}">
                         <div class="imgWrap">
                             <img th:each="img : ${project.projectImgList}"
                                  th:if="${img.imageType == T(com.portfolio.constant.ProjectImgStatus).MAINPAGE}"
@@ -29,6 +29,7 @@
             </ul>
             <div class="swiper-button-next"></div>
             <div class="swiper-button-prev"></div>
+<!--            <div class="swiper-pagination"></div>-->
         </div>
     </div>
 
@@ -73,7 +74,7 @@
             <li th:each="project : ${projects}"
                 th:if="${project.categories.contains(T(com.portfolio.constant.ProjectCategoryStatus).ALL)}">
 
-                <a href="#">
+                <a th:href="@{/project/detail/{id}(id=${project.id})}">
                     <div class="imgWrap">
                         <img th:each="img : ${project.projectImgList}"
                              th:if="${img.imageType == T(com.portfolio.constant.ProjectImgStatus).MAINPAGE}"
@@ -96,7 +97,7 @@
         <ul id="tab2" class="list">
             <li th:each="project : ${projects}"
                 th:if="${project.categories.contains(T(com.portfolio.constant.ProjectCategoryStatus).DEVELOPMENT)}">
-                <a href="#">
+                <a th:href="@{/project/detail/{id}(id=${project.id})}">
                     <div class="imgWrap">
                         <img th:each="img : ${project.projectImgList}"
                              th:if="${img.imageType == T(com.portfolio.constant.ProjectImgStatus).MAINPAGE}"
@@ -118,7 +119,7 @@
         <ul id="tab3" class="list">
             <li th:each="project : ${projects}"
                 th:if="${project.categories.contains(T(com.portfolio.constant.ProjectCategoryStatus).WEB)}">
-                <a href="#">
+                <a th:href="@{/project/detail/{id}(id=${project.id})}">
                     <div class="imgWrap">
                         <img th:each="img : ${project.projectImgList}"
                              th:if="${img.imageType == T(com.portfolio.constant.ProjectImgStatus).MAINPAGE}"
@@ -140,7 +141,7 @@
         <ul id="tab4" class="list">
             <li th:each="project : ${projects}"
                 th:if="${project.categories.contains(T(com.portfolio.constant.ProjectCategoryStatus).REACTION)}">
-                <a href="#">
+                <a th:href="@{/project/detail/{id}(id=${project.id})}">
                     <div class="imgWrap">
                         <img th:each="img : ${project.projectImgList}"
                              th:if="${img.imageType == T(com.portfolio.constant.ProjectImgStatus).MAINPAGE}"
@@ -162,7 +163,7 @@
         <ul id="tab5" class="list">
             <li th:each="project : ${projects}"
                 th:if="${project.categories.contains(T(com.portfolio.constant.ProjectCategoryStatus).SNS)}">
-                <a href="#">
+                <a th:href="@{/project/detail/{id}(id=${project.id})}">
                     <div class="imgWrap">
                         <img th:each="img : ${project.projectImgList}"
                              th:if="${img.imageType == T(com.portfolio.constant.ProjectImgStatus).MAINPAGE}"
@@ -184,7 +185,7 @@
         <ul id="tab6" class="list">
             <li th:each="project : ${projects}"
                 th:if="${project.categories.contains(T(com.portfolio.constant.ProjectCategoryStatus).DETAIL)}">
-                <a href="#">
+                <a th:href="@{/project/detail/{id}(id=${project.id})}">
                     <div class="imgWrap">
                         <img th:each="img : ${project.projectImgList}"
                              th:if="${img.imageType == T(com.portfolio.constant.ProjectImgStatus).MAINPAGE}"

@@ -90,4 +90,9 @@ public class ProjectService {
         return projectRepository.findByProjectStatusOrderByRegTimeDesc(ProjectStatus.NOTICE);
     }
 
+    public Project getProjectById(Long projectId) {
+        return projectRepository.findById(projectId)
+                .orElseThrow(() -> new RuntimeException("Project not found"));
+    }
+
 }
