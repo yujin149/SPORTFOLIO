@@ -14,10 +14,13 @@
         <div class="headerInner">
             <h1 class="logo"><a href="/"><img th:src="@{/images/logo.png}" alt="SPORTFOLIO"></a></h1>
             <div class="headerBtn">
-               <div class="searchWrap">
-                   <input type="text" placeholder="검색어를 입력해주세요.">
-                   <span class="icon"><img th:src="@{/images/search.png}" alt="검색"></span>
-               </div>
+                <form class="searchWrap" action="/search" method="get">
+                    <input type="text" placeholder="검색어를 입력해주세요." id="headerSearchInput" name="keyword">
+                    <input type="hidden" name="category" value="ALL">
+                    <button type="submit" class="icon">
+                        <img th:src="@{/images/search.png}" alt="검색">
+                    </button>
+                </form>
                 <a href="#" class="menuBtn">메뉴</a>
             </div>
         </div>
@@ -31,6 +34,13 @@
         </ul>
     </div>
 
+    <script th:inline="javascript">
+    // 폼 제출 시 항상 검색 페이지로 이동
+    document.querySelector('.headerBtn .searchWrap').addEventListener('submit', function(e) {
+        // 빈 검색어 체크 제거
+        // 폼이 그대로 제출되어 검색 페이지로 이동
+    });
+    </script>
 </div>
 </body>
 </html>

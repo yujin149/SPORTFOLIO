@@ -1,0 +1,28 @@
+.searchPage{margin:66px auto 2.5rem; min-height: calc(100vh - 248px);}
+
+.searchPage .searchInner{background:var(--bg-color); padding:20px 0; border-bottom:1px solid var(--gray-color);}
+
+.searchPage .searchWrap{display: flex; justify-content: space-between; align-items: center; max-width: 1080px; width:94%; margin:0 auto;}
+.searchPage .searchWrap select{width:220px; height:50px;}
+.searchPage .searchWrap input{width:calc(100% - 230px); height:50px;}
+.searchPage .resultWrap{margin:2.5rem 0;}
+.searchPage .resultWrap .tit{text-align: center; color:var(--bk-color); font-size:2.25rem; font-weight:700;}
+.searchPage .resultWrap .tit span{color:var(--main-color);}
+.searchPage .resultWrap .txt{text-align: center; margin-top:15px;}
+
+.searchPage .projectListWrap .list{display: flex;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

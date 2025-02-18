@@ -13,8 +13,8 @@ img{width:100%;}
 .headerWrap .headerInner .menuBtn.active:after{transform: rotate(135deg); top:50%; transition:all 0.2s;}
 
 
-.navWrap{width:100%;border-bottom:1px solid var(--gray-color); background: var(--bg-color); position:fixed; top:66px; left:0; z-index: 9999999; box-shadow: var(--box-shadow); height:0;opacity: 0;}
-.navWrap.active{height:60px;opacity: 1; transition:all 0.2s;}
+.navWrap{width:100%;border-bottom:1px solid var(--gray-color); background: var(--bg-color); position:fixed; top:66px; left:0; z-index: 9999999; box-shadow: var(--box-shadow); height:0;opacity: 0; display: none;}
+.navWrap.active{height:60px;opacity: 1; transition:all 0.2s; display: block;}
 
 .navWrap .nav{width:1080px; margin:20px auto; display: flex; justify-content: flex-start; align-items: center;}
 .navWrap .nav > li > a{font-size: 1rem; font-weight:600; color:var(--bk-color); padding:0 24px;}

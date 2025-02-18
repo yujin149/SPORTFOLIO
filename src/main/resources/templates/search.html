@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html
+    layout:decorate="~{layouts/layout}"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+
+<body>
+<div layout:fragment="content">
+    <div class="searchPage">
+        <div class="searchInner">
+            <form class="searchWrap" action="/search" method="get">
+                <select id="categoryProj" name="category">
+                    <option value="ALL" th:selected="${selectedCategory == 'ALL'}">전체</option>
+                    <option value="DEVELOPMENT" th:selected="${selectedCategory == 'DEVELOPMENT'}">웹 개발</option>
+                    <option value="WEB" th:selected="${selectedCategory == 'WEB'}">웹 & 모바일</option>
+                    <option value="REACTION" th:selected="${selectedCategory == 'REACTION'}">반응형 웹</option>
+                    <option value="SNS" th:selected="${selectedCategory == 'SNS'}">SNS 컨텐츠</option>
+                    <option value="DETAIL" th:selected="${selectedCategory == 'DETAIL'}">상세페이지 & 이벤트페이지</option>
+                </select>
+                <input type="text" id="searchInput" name="keyword" placeholder="프로젝트명을 입력해주세요." th:value="${keyword}">
+                <button type="submit" class="icon">
+                    <img alt="검색" src="/images/search.png">
+                </button>
+            </form>
+        </div>
+        <div class="contWrap projectListWrap ">
+            <div class="resultWrap">
+                <p class="tit"><span class="keyword" th:text="${keyword ?: '&quot; &quot; '}"></span>에 대한 검색 결과</p>
+                <p class="txt"><span class="total" th:text="${totalResults}">0</span>개의 프로젝트를 발견했습니다.</p>
+            </div>
+
+            <ul class="list">
+                <li th:each="project : ${projects}">
+                    <a th:href="@{/project/detail/{id}(id=${project.id})}">
+                        <div class="imgWrap">
+                            <img th:each="img : ${project.projectImgList}" th:if="${img.imageType == T(com.portfolio.constant.ProjectImgStatus).MAINPAGE}"
+                                 th:src="@{${img.imgUrl}}" alt="Main Image"/>
+                        </div>
+                        <div class="textWrap">
+                            <div class="txtBox">
+                                <p class="title" th:text="${project.title}">사이트 명</p>
+                                <span class="view" th:text="${project.viewCount}">136</span>
+                            </div>
+                            <p class="option" th:text="${project.getCategoriesDisplayNames()}">웹 개발</p>
+                        </div>
+                    </a>
+                </li>
+                <li th:if="${projects == null or projects.empty}" class="no-results">
+                    <p>검색 결과가 없습니다.</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>
