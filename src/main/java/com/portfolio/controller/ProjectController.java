@@ -53,7 +53,9 @@ public class ProjectController {
         model.addAttribute("htmlConcept", htmlExample);
         model.addAttribute("htmlPart", htmlExample);
         model.addAttribute("htmlDetail", htmlExample);
-
+        
+        model.addAttribute("isEdit", false);
+        
         return "/projects/write";
     }
     @PostMapping("/write")
@@ -251,6 +253,12 @@ public class ProjectController {
         Project updatedProject = projectService.updateProject(projectId, projectDto);
         
         return "redirect:/project/detail/" + updatedProject.getId();
+    }
+
+    @PostMapping("/project/delete/{id}")
+    public String deleteProject(@PathVariable("id") Long projectId) {
+        projectService.deleteProject(projectId);
+        return "redirect:/project";
     }
 
 }

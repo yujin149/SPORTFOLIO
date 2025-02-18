@@ -141,4 +141,16 @@ public class ProjectService {
         return projectRepository.save(project);
     }
 
+    public void deleteProject(Long projectId) {
+        Project project = projectRepository.findById(projectId)
+            .orElseThrow(() -> new RuntimeException("Project not found"));
+        
+        // 프로젝트 이미지 파일들 삭제
+        for (ProjectImg img : project.getProjectImgList()) {
+            fileService.deleteFile(img.getImgName());
+        }
+        
+        projectRepository.delete(project);
+    }
+
 }
