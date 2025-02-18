@@ -50,7 +50,7 @@
 .detailWrap01 .conceptBox{margin-top:20.5rem;}
 .detailWrap01 h3{font-size:3.125rem; font-weight:700; color:var(--bk-color); margin-bottom:1.875rem;}
 .detailWrap01 h3 .pink{color:var(--main-color);}
-.detailWrap01 p{color:var(--text-color); font-weight:400; line-height: 1.4;}
+.detailWrap01 p{color:var(--text-color); font-weight:400; line-height: 1.4; white-space: pre-line;}
 .detailWrap01 p .bold{font-weight:600;}
 .detailWrap01 p .color{color:var(--bk-color);}
 
@@ -86,7 +86,7 @@
 .detailWrap02 .textWarp .info li p{color:var(--small-color);}
 .detailWrap02 .textWarp .info li p.tit:after{display: inline-block; content:':'; color:var(--small-color); margin:0 3px; font-weight:400;}
 
-.detailWrap02 .textWarp .detailText {margin-top:0.9375rem;}
+.detailWrap02 .textWarp .detailText {margin-top:0.9375rem; white-space: pre-line;}
 
 .detailWrap02 .imgWrap{margin-top:2.5rem; text-align: center;}
 .detailWrap02 .imgWrap img{width:auto; max-width:100%; border:1px solid
@@ -97,11 +97,15 @@ var(--gray-color); box-shadow: var(--box-shadow);}
 .detailWrap .btnWrap .updateBtn{width:100px; background:var(--bk-color); margin-right:10px; color:var(--white-color);}
 .detailWrap .btnWrap .deleteBtn{width:100px; background:var(--bk-color);margin-right:10px;color:var(--white-color);}
 
+.detailWrap01 .btnWrap .updateBtn{background:var(--white-color); color:var(--bk-color);}
+.detailWrap01 .btnWrap .deleteBtn{background:var(--white-color);color:var(--bk-color);}
 
 
+.detailWrap .bar{display:inline-block; padding:0 10px; }
+.detailWrap .bar:after{display: block; content:''; width:1px; height:10px; background:var(--gray-color);}
 
-
-
+.projWriteWrap .currentImage{width:160px; height:80px; position:relative; overflow: hidden; border:1px solid var(--gray-color);}
+.projWriteWrap .currentImage img{position:absolute; top:0; left:0; width:100%; height:100%; object-fit: cover;}
 
 
 

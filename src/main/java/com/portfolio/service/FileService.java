@@ -23,7 +23,7 @@ public class FileService {
     private String staticResourcePath;
 
     // 파일 업로드
-    public String uploadFile(String uploadPath, String originalFileName, byte[] fileData) throws Exception {
+    public String uploadFile(String uploadPath, String originalFileName, byte[] fileData) throws IOException {
         UUID uuid = UUID.randomUUID(); // UUID 생성
         String extension = originalFileName.substring(originalFileName.lastIndexOf("."));
         String savedFileName = uuid.toString() + extension; // 저장될 파일 이름 생성

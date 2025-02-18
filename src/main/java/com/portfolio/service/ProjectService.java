@@ -95,4 +95,50 @@ public class ProjectService {
                 .orElseThrow(() -> new RuntimeException("Project not found"));
     }
 
+    public Project updateProject(Long projectId, ProjectDto projectDto) {
+        Project project = projectRepository.findById(projectId)
+                .orElseThrow(() -> new RuntimeException("Project not found"));
+        
+        // 기본 정보 업데이트
+        project.setProjectStatus(projectDto.getProjectStatus());
+        project.setTitle(projectDto.getTitle());
+        project.setClient(projectDto.getClient());
+        project.setType(projectDto.getType());
+        project.setTool(projectDto.getTool());
+        project.setConcept(processContent(projectDto.getConcept()));
+        project.setPart(processContent(projectDto.getPart()));
+        project.setDetail(processContent(projectDto.getDetail()));
+        project.setUrl(projectDto.getUrl());
+        project.setCategories(projectDto.getCategories());
+        
+        // 이미지 업데이트
+        if (projectDto.getProjectImgList() != null && !projectDto.getProjectImgList().isEmpty()) {
+            // 기존 이미지 삭제
+            for (ProjectImg oldImg : project.getProjectImgList()) {
+                fileService.deleteFile(oldImg.getImgName());
+            }
+            project.getProjectImgList().clear();
+            
+            // 새 이미지 추가
+            for (ProjectImgDto imgDto : projectDto.getProjectImgList()) {
+                ProjectImg projectImg = new ProjectImg();
+                projectImg.setProject(project);
+                projectImg.setImgName(imgDto.getImgName());
+                projectImg.setOriImgName(imgDto.getOriImgName());
+                projectImg.setImgUrl(imgDto.getImgUrl());
+                projectImg.setImageType(imgDto.getImageType());
+                
+                try {
+                    fileService.copyToStaticResource(imgDto.getImgName());
+                } catch (IOException e) {
+                    throw new RuntimeException("Failed to copy image to static resource location", e);
+                }
+                
+                project.getProjectImgList().add(projectImg);
+            }
+        }
+        
+        return projectRepository.save(project);
+    }
+
 }
