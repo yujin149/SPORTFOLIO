@@ -69,7 +69,7 @@ public class ProjectController {
                 // 파일 저장 및 URL 생성
                 String originalFilename = file.getOriginalFilename();
                 String savedFileName = fileService.uploadFile(uploadPath, originalFilename, file.getBytes());
-                String imageUrl = "/images/project/" + savedFileName;
+                String imageUrl = "/images/projectImg/" + savedFileName;
                 
 
                 imgDto.setImgName(savedFileName);

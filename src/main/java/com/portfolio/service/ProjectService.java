@@ -8,13 +8,25 @@ import com.portfolio.repository.ProjectImgRepository;
 import com.portfolio.repository.ProjectRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 
 @Service
 public class ProjectService {
 
     private final ProjectRepository projectRepository;
     private final ProjectImgRepository projectImgRepository;
+
+    @Value("${uploadPath}")
+    private String uploadPath;
+
+    @Value("${projectImgLocation}")
+    private String projectImgLocation;
 
     @Autowired
     public ProjectService(ProjectRepository projectRepository, ProjectImgRepository projectImgRepository) {
@@ -47,6 +59,16 @@ public class ProjectService {
             projectImg.setOriImgName(projectImgDto.getOriImgName());
             projectImg.setImgUrl(projectImgDto.getImgUrl());
             projectImg.setImageType(projectImgDto.getImageType());
+
+            // 이미지를 정적 리소스 경로에도 복사
+            try {
+                Path sourcePath = Paths.get(projectImgLocation, projectImgDto.getImgName());
+                Path targetPath = Paths.get(uploadPath, projectImgDto.getImgName());
+                Files.copy(sourcePath, targetPath, StandardCopyOption.REPLACE_EXISTING);
+            } catch (IOException e) {
+                throw new RuntimeException("Failed to copy image to static resource location", e);
+            }
+
             projectImgRepository.save(projectImg);
         }
 
