@@ -16,7 +16,9 @@
                         <div class="txtBox">
                             <select name="projectStatus" id="recommendProj">
                                 <option value="NOTICE" th:selected="${project != null && project.projectStatus == T(com.portfolio.constant.ProjectStatus).NOTICE}">추천</option>
-                                <option value="GENERAL" th:selected="${project != null && project.projectStatus == T(com.portfolio.constant.ProjectStatus).GENERAL}">일반</option>
+                                <option value="GENERAL" 
+                                        th:selected="${project == null || project.projectStatus == T(com.portfolio.constant.ProjectStatus).GENERAL}"
+                                        selected>일반</option>
                             </select>
                             <input type="text" name="title" th:value="${project != null ? project.title : ''}" placeholder="프로젝트명">
                         </div>
@@ -30,7 +32,7 @@
                                            th:id="${'category-' + category.name()}"
                                            th:value="${category.name()}"
                                            name="categories"
-                                           th:checked="${project != null && project.categories.contains(category)}">
+                                           th:checked="${category.name() == 'ALL' || (project != null && project.categories.contains(category))}">
                                     <label th:for="${'category-' + category.name()}"
                                            th:text="${category.displayName}">카테고리명</label>
                                 </li>
