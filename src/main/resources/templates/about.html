@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html
+    layout:decorate="~{layouts/layout}"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+
+<body>
+<div layout:fragment="content">
+    <div class="contWrap aboutWrap">
+        <div class="profileWrap">
+            <div class="imgBox">
+                <img th:src="@{/images/profileImg.png}" alt="about me">
+            </div>
+            <div class="profileInfo">
+                <p class="title"><span class="pink">S</span>ONG YUJIN</p>
+                <p class="subTitle">꾸준한 끈기와 도전정신으로 가득 찬, <span class="bold">송유진</span>입니다.</p>
+
+                <ul class="info">
+                    <li>
+                        <p class="tit">생년월일</p>
+                        <p class="txt">1994년 09월 14일</p>
+                    </li>
+                    <li>
+                        <p class="tit">MBTI</p>
+                        <p class="txt">INFJ</p>
+                    </li>
+                    <li>
+                        <p class="tit">전화번호</p>
+                        <p class="txt">010-5913-1174</p>
+                    </li>
+                    <li>
+                        <p class="tit">이메일</p>
+                        <p class="txt">swtask149@gmail.com</p>
+                    </li>
+                    <li class="address">
+                        <p class="tit">주소</p>
+                        <p class="txt">경기도 부천시 소사구 경인로 287번길</p>
+                    </li>
+                </ul>
+
+                <div class="personalWrap">
+                    <p class="title">주위에서 말하는 나의 성격</p>
+                    <ul class="tabWrap">
+                        <li><a href="#tab01" class="active">성실함</a></li>
+                        <li><a href="#tab02">계획적인</a></li>
+                        <li><a href="#tab03">책임감이 강한</a></li>
+                        <li><a href="#tab04">창의적인</a></li>
+                        <li><a href="#tab05">배려심이 깊은</a></li>
+                        <li><a href="#tab06">친절함</a></li>
+                        <li><a href="#tab07">예의 바른</a></li>
+                    </ul>
+
+                    <ul id="tab01" class="tabCont active">
+                       <li>
+                           <p class="name">강** 디자이너</p>
+                           <p class="txt">매일 회사에 제일 먼저 도착해서 업무를 시작하고 있어서 <span class="bold">성실</span>한 것 같다고 생각했어.</p>
+                       </li>
+                        <li>
+                            <p class="name">박** 친한친구</p>
+                            <p class="txt">부족한 게 있으면 항상 열심히 공부하고 노력하는 모습을 보고 의지가 강하고 <span class="bold">성실하다</span>고 생각했어.</p>
+                        </li>
+                        <li>
+                            <p class="name">김** 친한친구</p>
+                            <p class="txt">너는 정말 <span class="bold">성실</span>해! 포기하지 않고 계속 나아가는 모습이 끈기 있고 대단하다고 생각해.</p>
+                        </li>
+                        <li>
+                            <p class="name">안** 디자이너</p>
+                            <p class="txt">유진씨는 <span class="bold">성실</span>한 거 같아요! 회사에 가면 항상 제일 먼저 도착해 있어서 npc같이 있던 모습이 선명해요!! </p>
+                        </li>
+                    </ul>
+                    <ul id="tab02" class="tabCont">
+                        <li>
+                            <p class="name">김** 친한친구</p>
+                            <p class="txt">다이어리에 기록하고 계획 세우는 모습을 보면 <span class="bold">계획적인</span> 성격인 거 같아. 실천하려고 노력하는 모습이 멋있어.</p>
+                        </li>
+                        <li>
+                            <p class="name">박** 친한친구</p>
+                            <p class="txt">같이 여행 갈 때 보면 <span class="bold">계획적</span>이고 정말 꼼꼼하다는 생각이 들었어. 뭐 놓고 온 물건 있으면 유진이만 찾으면 돼!</p>
+                        </li>
+                        <li>
+                            <p class="name">김** 친한친구</p>
+                            <p class="txt">항상 <span class="bold">계획적</span>으로 일정을 짜고 시간관리를 잘하는 것 같아. 목표가 뚜렷하고 해야할 일을 파악한다는 게 대단해. </p>
+                        </li>
+
+                    </ul>
+                    <ul id="tab03" class="tabCont">
+                        <li>
+                            <p class="name">이** 직장동료</p>
+                            <p class="txt">업무량이 많아서 밀려있을 때 늦지 않게 하려고 하는 모습이 <span class="bold">책임감이 강하다</span>고 생각했어.</p>
+                        </li>
+                        <li>
+                            <p class="name">이** 퍼블리셔</p>
+                            <p class="txt">같이 프로젝트 할 때, 언니가 계획을 다 세워주고 팀장처럼 챙겨줘서 <span class="bold">책임감 강하고 계획적인</span> 성격이라고 생각했어요!</p>
+                        </li>
+
+
+                    </ul>
+                    <ul id="tab04" class="tabCont">
+                        <li>
+                            <p class="name">김** 선배님</p>
+                            <p class="txt">동아리원 모집할 때 만든 포스터나 동아리 활동할 때 꾸미는 것들을 봤을 때 <span class="bold">창의적</span>이고 손재주가 정말 좋은 거 같아.</p>
+                        </li>
+                        <li>
+                            <p class="name">권** 개발자</p>
+                            <p class="txt">프로젝트 기획할 때 생각지도 못한 기획으로 감탄해서 <span class="bold">창의적</span>이다고 생각했어. 브랜드명이나 로고 디자인도 정말 예뻤어!</p>
+                        </li>
+
+                    </ul>
+                    <ul id="tab05" class="tabCont">
+                        <li>
+                            <p class="name">이** 친한친구</p>
+                            <p class="txt">너는 주변 사람들에게 애정 어린 관심을 가지고 잘 지켜보면서, <span class="bold">배려심 있게</span> 필요한 때에 적절하게 도움을 주는 것 같아.</p>
+                        </li>
+                        <li>
+                            <p class="name">이** 디자이너</p>
+                            <p class="txt">업무할 때 모르는 것을 잘 알려주고 도와줘서 <span class="bold">배려심이 깊다</span>고 생각했어요.</p>
+                        </li>
+                        <li>
+                            <p class="name">소** 친한친구</p>
+                            <p class="txt">같이 봉사활동 할 때 도움을 줘서 고마워. 남을 먼저 생각하는 마음에 <span class="bold">배려심이 깊다</span>고 느꼈어.</p>
+                        </li>
+                        <li>
+                            <p class="name">장** 친한친구</p>
+                            <p class="txt">네가 너무 착하고 <span class="bold">배려 깊어서</span> 오랫동안 친구 할 수 있는 이유이지 않을까?</p>
+                        </li>
+
+                    </ul>
+                    <ul id="tab06" class="tabCont">
+                        <li>
+                            <p class="name">조** 친한동생</p>
+                            <p class="txt">고민이 있을때, 잘 들어주고 공감해줘서 <span class="bold">친절</span>하다고 생각했어. 나한테는 천사같은 언니야.</p>
+                        </li>
+                        <li>
+                            <p class="name">박** 친한친구</p>
+                            <p class="txt">너는 공감을 잘해서 어려운 상황에 처한 다른 사람을 마음 깊이 이해하고 존중해 주면서도 항상 <span class="bold">친절함</span>을 잃지 않는 것 같아!</p>
+                        </li>
+                        <li>
+                            <p class="name">우** 디자이너</p>
+                            <p class="txt">유진님은 <span class="bold">친절</span>하신 거 같아요. 예전에 업무가 힘들때 옆에서 많이 도와줘서 감사했어요.</p>
+                        </li>
+
+                    </ul>
+                    <ul id="tab07" class="tabCont">
+                        <li>
+                            <p class="name">김** 친한친구</p>
+                            <p class="txt">지금까지 중학교, 고등학교 선생님이랑 연락하고 주변을 잘 챙기는 것보면 <span class="bold">예의 바르고</span> 사교성이 좋아. 인연을 소중하게 생각하는 모습이 따뜻해.</p>
+                        </li>
+                        <li>
+                            <p class="name">박** 친한친구</p>
+                            <p class="txt">어른들께 먼저 인사하고 솔선수범해서 일을 해내는 모습이 진짜 멋있어! 그런 <span class="bold">예의 있는</span> 모습이 주변 사람들에게 좋은 본보기가 되는 것 같아.</p>
+                        </li>
+
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <div class="bgWrap aboutWrap">
+        <div class="contWrap infoWrap">
+            <div class="leftBox infoBox">
+                <div class="skillBox">
+                    <div class="subTitle">프로그램 숙련도 및 보유스킬</div>
+                    <ul class="skillList">
+                        <li>PhotoShop</li>
+                        <li>Illustrator</li>
+                        <li>HTML5</li>
+                        <li>CSS3</li>
+                        <li>Jquery</li>
+                        <li>JavaScript</li>
+                        <li>JAVA</li>
+                        <li>JSP</li>
+                        <li>Spring Boot</li>
+                        <li>React</li>
+                        <li>Node</li>
+                        <li>MySQL</li>
+
+                    </ul>
+                </div>
+
+                <div class="eduList">
+                    <div class="subTitle">학력</div>
+                    <ul class="list">
+                        <li>
+                            <p class="date">2016.02</p>
+                            <p class="txt">숭의여자대학교 졸업 <span class="info">패션디자인전공(2년제)</span></p>
+                        </li>
+                        <li>
+                            <p class="date">2013.02</p>
+                            <p class="txt">소명여자고등학교 졸업</p>
+                        </li>
+
+                    </ul>
+                </div>
+                <div class="eduList">
+                    <div class="subTitle">보유 자격증</div>
+                    <ul class="list">
+                        <li>
+                            <p class="date">2024.09</p>
+                            <p class="txt">웹디자인기능사 <span class="info">한국산업인력공단</span></p>
+                        </li>
+                        <li>
+                            <p class="date">2023.12</p>
+                            <p class="txt">GTQ 1급 <span class="info">한국생산성본부</span></p>
+                        </li>
+                        <li>
+                            <p class="date">2017.08</p>
+                            <p class="txt">컴퓨터활용능력 2급 <span class="info">대한상공회의소</span></p>
+                        </li>
+                        <li>
+                            <p class="date">2015.06</p>
+                            <p class="txt">샵마스터 3급 <span class="info">한국직업연구진흥원</span></p>
+                        </li>
+                        <li>
+                            <p class="date">2014.10</p>
+                            <p class="txt">1종보통운전면허 <span class="info">경찰청(운전면허시험관리단)</span></p>
+                        </li>
+                        <li>
+                            <p class="date">2014.04</p>
+                            <p class="txt">컴퓨터그래픽스운용기사 <span class="info">한국산업인력공단</span></p>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="rightBox">
+                <div class="workList">
+                    <div class="subTitle">경력 사항</div>
+                    <ul class="list">
+                        <li>
+                            <p class="date">2023.10 - 2024.02</p>
+                            <div class="txt"><p class="name">라본브아</p> <span class="info">카페24 홈페이지 제작, 상세페이지 및 SNS 디자인</span></div>
+                        </li>
+                        <li>
+                            <p class="date">2022.01 - 2023.01</p>
+                            <div class="txt"><p class="name">무지소프트</p> <span class="info">홈페이지 디자인 및 퍼블리싱, 유지보수</span></div>
+                        </li>
+                        <li>
+                            <p class="date">2018.04 - 2019.07</p>
+                            <div class="txt"><p class="name">다람미디어</p> <span class="info">홈페이지 디자인 및 퍼블리싱, 유지보수</span></div>
+                        </li>
+
+                    </ul>
+                </div>
+                <div class="workList">
+                    <div class="subTitle">기타 활동 및 교육</div>
+                    <ul class="list">
+                        <li>
+                            <p class="date">2024.09 - 2025.04</p>
+                            <div class="txt"><p class="name">MSA기반 플러터(Dart)활용 자바(JAVA)프론트엔드 백엔드 풀스택 웹(앱)개발</p> <span class="info">JAVA, JSP, SPRING BOOT, NODE, REACT, FLUTTER 등</span></div>
+                        </li>
+                        <li>
+                            <p class="date">2023.08 - 2023.09</p>
+                            <div class="txt"><p class="name">커넥트온</p> <span class="info">기획 및 제작, 마케팅</span></div>
+                        </li>
+                        <li>
+                            <p class="date">2020.10 - 2020.12</p>
+                            <div class="txt"><p class="name">웹디자인 (웹퍼블리셔)양성 훈련과정</p> <span class="info">웹디자인 자격증 기반 강의</span></div>
+                        </li>
+                        <li>
+                            <p class="date">2020.10 - 2020.10</p>
+                            <div class="txt"><p class="name">Tomi /JD </p> <span class="info">카페24 활용한 홈페이지 디자인 수정 및 상세페이지 제작</span></div>
+                        </li>
+                        <li>
+                            <p class="date">2020.02 - 2020.06</p>
+                            <div class="txt"><p class="name">솔직한식탁</p> <span class="info">제품 상세페이지 제작 및 블로그, SNS 관리</span></div>
+                        </li>
+                        <li>
+                            <p class="date">2019.11 - 2020.01</p>
+                            <div class="txt"><p class="name">로킷헬스케어</p> <span class="info">카페24 홈페이지 제작, 상세페이지 제작</span></div>
+                        </li>
+                        <li>
+                            <p class="date">2017.09 - 2018.02</p>
+                            <div class="txt"><p class="name">스마트기기 UXUI 디자인 (디지털 앱, 웹)</p> <span class="info">포토샵 및 일러스트</span></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+</body>
+</html>
