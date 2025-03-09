@@ -23,6 +23,8 @@ public class ProjectDto {
     private String part;
     private String detail;
     private String url;
+    private String github;
+    private String notion;
     private List<ProjectCategoryStatus> categories; //카테고리 목록
     private List<ProjectImgDto> projectImgList; //이미지 목록 (ProjectImgDto 형태로 변환)
     private Integer viewCount;
@@ -38,7 +40,7 @@ public class ProjectDto {
     //카테고리 목록을 DisplayName으로 변환
     public String getCategoriesDisplayNames() {
         return categories.stream()
-                .map(ProjectCategoryStatus::getDisplayName)
-                .collect(Collectors.joining(", "));
+            .map(ProjectCategoryStatus::getDisplayName)
+            .collect(Collectors.joining(", "));
     }
 }

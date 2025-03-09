@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html
+    layout:decorate="~{layouts/detailLayout}"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<body>
+<div layout:fragment="content">
+    <div class="detailWrap detailWrap01 detailWrap03" th:style="${isDevelopment ? 'display:block' : 'display:none'}">
+        <div class="projectIntro" th:style="'background-image:url(' + ${mainBannerUrl} + ')'">
+            <h3 class="title" th:text="${project.title}">프로젝트 명 + WEB SITE</h3>
+            <img th:src="${previewUrl}" alt="미리보기 이미지">
+            <div class="btnWrap">
+                <div sec:authorize="hasRole('ADMIN')">
+                    <a class="updateBtn" th:href="@{/admin/project/edit/{id}(id=${project.id})}">수정</a>
+                    <form th:action="@{/project/delete/{id}(id=${project.id})}" method="post" style="display: inline;">
+                        <a class="deleteBtn" href="#" onclick="if(confirm('정말 삭제하시겠습니까?')) this.closest('form').submit(); return false;">삭제</a>
+                    </form>
+                </div>
+                <a class="githubBtn" th:href="${project.github}" th:if="${project.github != null and project.github != ''}" th:text="|GitHub 바로가기 +|" target="_blank">GitHub 바로가기 +</a>
+                <a class="notionBtn" th:href="${project.notion}" th:if="${project.notion != null and project.notion != ''}" th:text="|Notion 바로가기 +|" target="_blank">Notion 바로가기 +</a>
+                <a class="siteBtn" th:href="${project.url}" th:if="${project.url != null and project.url != ''}" th:text="|사이트 바로가기 +|" target="_blank">사이트 바로가기 +</a>
+                <a class="listBtn" href="/project">포트폴리오 리스트</a>
+            </div>
+        </div>
+
+        <div class="conceptBox">
+            <h3><span class="pink">P</span>ROJECT CONCEPT</h3>
+            <p class="text" th:utext="${project.concept}"></p>
+            <p class="participation" th:utext="${project.part}"></p>
+        </div>
+
+        <div class="detailInner">
+            <div class="imgWrap">
+                <img alt="ETC" th:src="${etcUrl}">
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script th:inline="javascript">
+    document.querySelector('.deleteBtn').addEventListener('click', function(e) {
+        e.preventDefault();
+
+        if (confirm('정말 삭제하시겠습니까?')) {
+            const projectId = /*[[${project.id}]]*/ null;
+            const token = document.querySelector('meta[name="_csrf"]').content;
+            const header = document.querySelector('meta[name="_csrf_header"]').content;
+
+            fetch(`/project/delete/${projectId}`, {
+                method: 'POST',
+                headers: {
+                    [header]: token
+                }
+            })
+                .then(response => {
+                    if (response.ok) {
+                        window.location.href = '/project';
+                    } else {
+                        alert('프로젝트 삭제에 실패했습니다.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('오류가 발생했습니다.');
+                });
+        }
+    });
+</script>
+
+</body>
+</html>

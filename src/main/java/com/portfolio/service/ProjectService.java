@@ -46,6 +46,8 @@ public class ProjectService {
         project.setDetail(processContent(projectDto.getDetail()));
         project.setUrl(projectDto.getUrl());
         project.setCategories(projectDto.getCategories());
+        project.setGithub(projectDto.getGithub());
+        project.setNotion(projectDto.getNotion());
 
         // 프로젝트 등록
         Project savedProject = projectRepository.save(project);
@@ -77,29 +79,31 @@ public class ProjectService {
         if (content == null) {
             return "";
         }
-        // XSS 방지를 위한 기본적인 검증이 필요할 수 있습니다.
-        // 여기서는 간단히 허용된 태그만 통과시키는 예시를 들겠습니다.
         return content.replaceAll("(?i)<(?!/?span)[^>]*>", ""); // span 태그만 허용
     }
 
     //리스트 가져오기
     public List<Project> getProjects() {
-        return projectRepository.findAllByOrderByRegTimeDesc();
+        return projectRepository.findAllByOrderByUpdateTimeDescRegTimeDesc();
     }
 
     public List<Project> getNoticeProjects() {
-        return projectRepository.findByProjectStatusOrderByRegTimeDesc(ProjectStatus.NOTICE);
+        return projectRepository.findByProjectStatusOrderByUpdateTimeDescRegTimeDesc(ProjectStatus.NOTICE);
     }
 
     public Project getProjectById(Long projectId) {
         Project project = projectRepository.findById(projectId)
             .orElseThrow(() -> new RuntimeException("Project not found"));
 
-        // 조회수 증가
-        project.incrementViewCount();
-        projectRepository.save(project);
+        // 조회수 증가를 별도의 쿼리로 처리
+        incrementViewCount(projectId);
 
         return project;
+    }
+
+    // 조회수 증가를 위한 별도 메서드
+    private void incrementViewCount(Long projectId) {
+        projectRepository.incrementViewCount(projectId);
     }
 
     public Project updateProject(Long projectId, ProjectDto projectDto) {
@@ -117,6 +121,8 @@ public class ProjectService {
         project.setDetail(processContent(projectDto.getDetail()));
         project.setUrl(projectDto.getUrl());
         project.setCategories(projectDto.getCategories());
+        project.setGithub(projectDto.getGithub());
+        project.setNotion(projectDto.getNotion());
 
         // 이미지 업데이트
         if (projectDto.getProjectImgList() != null && !projectDto.getProjectImgList().isEmpty()) {
@@ -164,15 +170,15 @@ public class ProjectService {
     public List<Project> searchProjects(String keyword, ProjectCategoryStatus category) {
         if (category != null && !category.equals(ProjectCategoryStatus.ALL)) {
             if (keyword != null && !keyword.isEmpty()) {
-                return projectRepository.findByCategoriesContainingAndTitleContainingOrderByRegTimeDesc(category, keyword);
+                return projectRepository.findByCategoriesContainingAndTitleContainingOrderByUpdateTimeDescRegTimeDesc(category, keyword);
             } else {
-                return projectRepository.findByCategoriesContainingOrderByRegTimeDesc(category);
+                return projectRepository.findByCategoriesContainingOrderByUpdateTimeDescRegTimeDesc(category);
             }
         } else if (keyword != null && !keyword.isEmpty()) {
-            return projectRepository.findByTitleContainingOrderByRegTimeDesc(keyword);
+            return projectRepository.findByTitleContainingOrderByUpdateTimeDescRegTimeDesc(keyword);
         }
         // 카테고리나 제목이 비어있으면 전체 검색
-        return projectRepository.findAllByOrderByRegTimeDesc();
+        return projectRepository.findAllByOrderByUpdateTimeDescRegTimeDesc();
     }
 
 

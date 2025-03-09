@@ -48,6 +48,12 @@ public class Project extends BaseEntity {
     @Column(name = "project_url")
     private String url; //사이트 주소
 
+    @Column(name = "project_github")
+    private String github; //깃 주소
+
+    @Column(name = "project_notion")
+    private String notion; //노션주소
+
     @OneToMany(mappedBy = "project", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ProjectImg> projectImgList = new ArrayList<>(); // 프로젝트에 관련된 이미지들
 
@@ -70,7 +76,7 @@ public class Project extends BaseEntity {
     //카테고리 목록을 DisplayName으로 변환
     public String getCategoriesDisplayNames() {
         return categories.stream()
-                .map(ProjectCategoryStatus::getDisplayName)
-                .collect(Collectors.joining(", "));
+            .map(ProjectCategoryStatus::getDisplayName)
+            .collect(Collectors.joining(", "));
     }
 }

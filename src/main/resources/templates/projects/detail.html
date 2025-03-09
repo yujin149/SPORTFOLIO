@@ -41,7 +41,7 @@
             </ul>
         </div>
 
-        <div class="detailBox bgGray" 
+        <div class="detailBox bgGray"
              th:if="${detail1Url != '' || detail2Url != '' || detail3Url != ''}">
             <h3><span class="pink">E</span>TC DETAIL PAGE</h3>
             <ul class="detailImg projPage">
@@ -90,33 +90,33 @@
 </div>
 
 <script th:inline="javascript">
-document.querySelector('.deleteBtn').addEventListener('click', function(e) {
-    e.preventDefault();
-    
-    if (confirm('정말 삭제하시겠습니까?')) {
-        const projectId = /*[[${project.id}]]*/ null;
-        const token = document.querySelector('meta[name="_csrf"]').content;
-        const header = document.querySelector('meta[name="_csrf_header"]').content;
-        
-        fetch(`/project/delete/${projectId}`, {
-            method: 'POST',
-            headers: {
-                [header]: token
-            }
-        })
-        .then(response => {
-            if (response.ok) {
-                window.location.href = '/project';
-            } else {
-                alert('프로젝트 삭제에 실패했습니다.');
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            alert('오류가 발생했습니다.');
-        });
-    }
-});
+    document.querySelector('.deleteBtn').addEventListener('click', function(e) {
+        e.preventDefault();
+
+        if (confirm('정말 삭제하시겠습니까?')) {
+            const projectId = /*[[${project.id}]]*/ null;
+            const token = document.querySelector('meta[name="_csrf"]').content;
+            const header = document.querySelector('meta[name="_csrf_header"]').content;
+
+            fetch(`/project/delete/${projectId}`, {
+                method: 'POST',
+                headers: {
+                    [header]: token
+                }
+            })
+                .then(response => {
+                    if (response.ok) {
+                        window.location.href = '/project';
+                    } else {
+                        alert('프로젝트 삭제에 실패했습니다.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('오류가 발생했습니다.');
+                });
+        }
+    });
 </script>
 
 </body>

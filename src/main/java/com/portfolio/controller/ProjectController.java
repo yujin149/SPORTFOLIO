@@ -53,15 +53,21 @@ public class ProjectController {
         model.addAttribute("htmlConcept", htmlExample);
         model.addAttribute("htmlPart", htmlExample);
         model.addAttribute("htmlDetail", htmlExample);
-        
+
         model.addAttribute("isEdit", false);
-        
+
         return "/projects/write";
     }
     @PostMapping("/admin/write")
     public String writeProject(
         @ModelAttribute ProjectDto projectDto,
-        @RequestParam("projectImgFile") List<MultipartFile> projectImgFiles) throws IOException {
+        @RequestParam("projectImgFile") List<MultipartFile> projectImgFiles,
+        @RequestParam(value = "github", required = false) String github,
+        @RequestParam(value = "notion", required = false) String notion) throws IOException {
+
+        // github과 notion 설정
+        projectDto.setGithub(github);
+        projectDto.setNotion(notion);
 
         // 이미지 처리 및 ProjectImgDto 생성
         List<ProjectImgDto> projectImgDtoList = new ArrayList<>();
@@ -97,7 +103,7 @@ public class ProjectController {
 
                     projectImgDtoList.add(imgDto);
                 } catch (IOException e) {
-                    throw e; // Re-throw IOException which is already declared
+                    throw e;
                 }
             }
         }
@@ -105,7 +111,7 @@ public class ProjectController {
         projectDto.setProjectImgList(projectImgDtoList);
 
         // 프로젝트 저장
-        projectService.writeProject(projectDto);
+        Project savedProject = projectService.writeProject(projectDto);
         return "redirect:/project";
     }
 
@@ -114,6 +120,39 @@ public class ProjectController {
     @GetMapping(value = "/project/detail/{id}")
     public String detail(@PathVariable("id") Long projectId, Model model) {
         Project project = projectService.getProjectById(projectId);
+
+        // DEVELOPMENT 카테고리 체크를 먼저 수행
+        boolean isDevelopment = project.getCategories().contains(ProjectCategoryStatus.DEVELOPMENT);
+        if (isDevelopment) {
+            // 필요한 이미지 URL들을 찾아서 모델에 추가
+            String mainBannerUrl = project.getProjectImgList().stream()
+                .filter(img -> img.getImageType() == ProjectImgStatus.MAINBANNER)
+                .map(ProjectImg::getImgUrl)
+                .findFirst()
+                .orElse("");
+
+            String previewUrl = project.getProjectImgList().stream()
+                .filter(img -> img.getImageType() == ProjectImgStatus.PREVIEW)
+                .map(ProjectImg::getImgUrl)
+                .findFirst()
+                .orElse("");
+
+            String etcUrl = project.getProjectImgList().stream()
+                .filter(img -> img.getImageType() == ProjectImgStatus.ETC)
+                .map(ProjectImg::getImgUrl)
+                .findFirst()
+                .orElse("");
+
+            model.addAttribute("project", project);
+            model.addAttribute("isDevelopment", true);
+            model.addAttribute("mainBannerUrl", mainBannerUrl);
+            model.addAttribute("previewUrl", previewUrl);
+            model.addAttribute("etcUrl", etcUrl);
+
+            return "/projects/detail_development";
+        }
+
+        // DEVELOPMENT가 아닌 경우 기존 로직 수행
         boolean isWebType = !(project.getCategories().contains(ProjectCategoryStatus.SNS)
             || project.getCategories().contains(ProjectCategoryStatus.DETAIL));
 
@@ -165,6 +204,7 @@ public class ProjectController {
             .map(ProjectImg::getImgUrl)
             .findFirst()
             .orElse("");
+
         String etcUrl = project.getProjectImgList().stream()
             .filter(img -> img.getImageType() == ProjectImgStatus.ETC)
             .map(ProjectImg::getImgUrl)
@@ -173,6 +213,7 @@ public class ProjectController {
 
         model.addAttribute("project", project);
         model.addAttribute("isWebType", isWebType);
+        model.addAttribute("isDevelopment", false);
         model.addAttribute("mainBannerUrl", mainBannerUrl);
         model.addAttribute("previewUrl", previewUrl);
         model.addAttribute("mainPageUrl", mainPageUrl);
@@ -189,17 +230,17 @@ public class ProjectController {
     @GetMapping("/admin/project/edit/{id}")
     public String edit(@PathVariable("id") Long projectId, Model model) {
         Project project = projectService.getProjectById(projectId);
-        
+
         // HTML 예시 텍스트 설정
         String htmlExample = "<span class=\"bold\">굵은 텍스트</span> 일반 텍스트 <span class=\"color\">색상 텍스트</span>";
         model.addAttribute("htmlConcept", htmlExample);
         model.addAttribute("htmlPart", htmlExample);
         model.addAttribute("htmlDetail", htmlExample);
-        
+
         // 프로젝트 정보를 모델에 추가
         model.addAttribute("project", project);
         model.addAttribute("isEdit", true);
-        
+
         return "/projects/write";
     }
 
@@ -208,50 +249,58 @@ public class ProjectController {
         @PathVariable("id") Long projectId,
         @ModelAttribute ProjectDto projectDto,
         @RequestParam("projectImgFile") List<MultipartFile> projectImgFiles,
-        @RequestParam(value = "existingImages", required = false) Map<String, String> existingImages) throws IOException {
-        
+        @RequestParam(value = "existingImages", required = false) Map<String, String> existingImages,
+        @RequestParam(value = "github", required = false) String github,
+        @RequestParam(value = "notion", required = false) String notion) throws IOException {
+
+        // github과 notion 설정
+        projectDto.setGithub(github);
+        projectDto.setNotion(notion);
+
         // 이미지 처리 및 ProjectImgDto 생성
         List<ProjectImgDto> projectImgDtoList = new ArrayList<>();
-        
+
         // 기존 이미지 처리
         if (existingImages != null) {
             for (Map.Entry<String, String> entry : existingImages.entrySet()) {
                 ProjectImgDto imgDto = new ProjectImgDto();
                 imgDto.setImgName(entry.getValue());
+                imgDto.setOriImgName(entry.getValue());
+                imgDto.setImgUrl("/images/projectImg/" + entry.getValue());
                 imgDto.setImageType(ProjectImgStatus.valueOf(entry.getKey()));
                 projectImgDtoList.add(imgDto);
             }
         }
-        
+
         // 새로운 이미지 처리
         for (int i = 0; i < projectImgFiles.size(); i++) {
             MultipartFile file = projectImgFiles.get(i);
             if (!file.isEmpty()) {
                 ProjectImgDto imgDto = new ProjectImgDto();
-                
+
                 // 파일 저장 및 URL 생성
                 try {
                     String originalFilename = file.getOriginalFilename();
                     String savedFileName = fileService.uploadFile(uploadPath, originalFilename, file.getBytes());
                     String imageUrl = "/images/projectImg/" + savedFileName;
-                    
+
                     imgDto.setImgName(savedFileName);
                     imgDto.setOriImgName(originalFilename);
                     imgDto.setImgUrl(imageUrl);
                     imgDto.setImageType(ProjectImgStatus.values()[i]);
-                    
+
                     projectImgDtoList.add(imgDto);
                 } catch (IOException e) {
                     throw e;
                 }
             }
         }
-        
+
         projectDto.setProjectImgList(projectImgDtoList);
-        
+
         // 프로젝트 업데이트
         Project updatedProject = projectService.updateProject(projectId, projectDto);
-        
+
         return "redirect:/project/detail/" + updatedProject.getId();
     }
 

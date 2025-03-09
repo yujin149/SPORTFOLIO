@@ -108,11 +108,13 @@ var(--gray-color); box-shadow: var(--box-shadow);}
 .projWriteWrap .currentImage{width:160px; height:80px; position:relative; overflow: hidden; border:1px solid var(--gray-color);}
 .projWriteWrap .currentImage img{position:absolute; top:0; left:0; width:100%; height:100%; object-fit: cover;}
 
+/*웹개발 페이지*/
+.detailWrap03  .detailInner{background:var(--bg-color); padding:6.25rem 0; margin-top:6.25rem;}
 
-
-
-
-
+.detailWrap .btnWrap > div{display: flex; justify-content: flex-end; align-items: center;}
+.detailWrap .btnWrap > div{display: flex; justify-content: flex-end; align-items: center;}
+.detailWrap03 .btnWrap .githubBtn{background:var(--bk-color); color:var(--white-color); margin-right:10px;}
+.detailWrap03 .btnWrap .notionBtn{background:var(--bk-color); color:var(--white-color); margin-right:10px;}
 
 
 
