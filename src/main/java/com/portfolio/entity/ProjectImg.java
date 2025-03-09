@@ -25,7 +25,7 @@ public class ProjectImg extends BaseEntity {
     @Column(name="projectimg_url")
     private String imgUrl; // 이미지 조회 경로
 
-    @Column(name="projectimg_type", length = 50)
+    @Column(name="projectimg_type", length = 20)
     @Enumerated(EnumType.STRING)
     private ProjectImgStatus imageType; // 이미지 타입 (BANNER, PREVIEW, DETAIL 등)
 

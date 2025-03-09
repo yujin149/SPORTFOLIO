@@ -9,7 +9,8 @@ public enum ProjectImgStatus {
     DETAIL1("DETAIL PAGE"),
     DETAIL2("DETAIL PAGE"),
     DETAIL3("DETAIL PAGE"),
-    ETC("ETC");
+    ETC("ETC"),
+    VIDEO("VIDEO");
 
     private final String description;
 

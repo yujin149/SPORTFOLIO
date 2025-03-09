@@ -74,7 +74,11 @@
             </div>
 
             <div class="imgWrap">
-                <img alt="ETC" th:src="${etcUrl}">
+                <img alt="ETC" th:src="${etcUrl}" th:if="${etcUrl != ''}">
+                <video controls autoplay loop muted th:if="${videoUrl != ''}" style="width: 100%;">
+                    <source th:src="${videoUrl}" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
             </div>
         </div>
         <div class="btnWrap">

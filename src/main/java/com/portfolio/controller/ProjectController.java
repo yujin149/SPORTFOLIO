@@ -88,17 +88,24 @@ public class ProjectController {
                     imgDto.setImgUrl(imageUrl);
 
                     // 이미지 타입 설정
-                    ProjectImgStatus imageType = switch (i) {
-                        case 0 -> ProjectImgStatus.MAINBANNER;
-                        case 1 -> ProjectImgStatus.PREVIEW;
-                        case 2 -> ProjectImgStatus.MAINPAGE;
-                        case 3 -> ProjectImgStatus.SUBPAGE1;
-                        case 4 -> ProjectImgStatus.SUBPAGE2;
-                        case 5 -> ProjectImgStatus.DETAIL1;
-                        case 6 -> ProjectImgStatus.DETAIL2;
-                        case 7 -> ProjectImgStatus.DETAIL3;
-                        default -> ProjectImgStatus.ETC;
-                    };
+                    ProjectImgStatus imageType;
+                    if (i < projectImgFiles.size() - 2) { // 마지막 두 개의 파일은 ETC와 VIDEO용
+                        imageType = switch (i) {
+                            case 0 -> ProjectImgStatus.MAINBANNER;
+                            case 1 -> ProjectImgStatus.PREVIEW;
+                            case 2 -> ProjectImgStatus.MAINPAGE;
+                            case 3 -> ProjectImgStatus.SUBPAGE1;
+                            case 4 -> ProjectImgStatus.SUBPAGE2;
+                            case 5 -> ProjectImgStatus.DETAIL1;
+                            case 6 -> ProjectImgStatus.DETAIL2;
+                            case 7 -> ProjectImgStatus.DETAIL3;
+                            default -> ProjectImgStatus.ETC;
+                        };
+                    } else if (i == projectImgFiles.size() - 2) {
+                        imageType = ProjectImgStatus.ETC;
+                    } else {
+                        imageType = ProjectImgStatus.VIDEO;
+                    }
                     imgDto.setImageType(imageType);
 
                     projectImgDtoList.add(imgDto);
@@ -211,6 +218,12 @@ public class ProjectController {
             .findFirst()
             .orElse("");
 
+        String videoUrl = project.getProjectImgList().stream()
+            .filter(img -> img.getImageType() == ProjectImgStatus.VIDEO)
+            .map(ProjectImg::getImgUrl)
+            .findFirst()
+            .orElse("");
+
         model.addAttribute("project", project);
         model.addAttribute("isWebType", isWebType);
         model.addAttribute("isDevelopment", false);
@@ -223,6 +236,7 @@ public class ProjectController {
         model.addAttribute("detail2Url", detail2Url);
         model.addAttribute("detail3Url", detail3Url);
         model.addAttribute("etcUrl", etcUrl);
+        model.addAttribute("videoUrl", videoUrl);
 
         return "/projects/detail";
     }
@@ -287,7 +301,27 @@ public class ProjectController {
                     imgDto.setImgName(savedFileName);
                     imgDto.setOriImgName(originalFilename);
                     imgDto.setImgUrl(imageUrl);
-                    imgDto.setImageType(ProjectImgStatus.values()[i]);
+
+                    // 이미지 타입 설정
+                    ProjectImgStatus imageType;
+                    if (i < projectImgFiles.size() - 2) { // 마지막 두 개의 파일은 ETC와 VIDEO용
+                        imageType = switch (i) {
+                            case 0 -> ProjectImgStatus.MAINBANNER;
+                            case 1 -> ProjectImgStatus.PREVIEW;
+                            case 2 -> ProjectImgStatus.MAINPAGE;
+                            case 3 -> ProjectImgStatus.SUBPAGE1;
+                            case 4 -> ProjectImgStatus.SUBPAGE2;
+                            case 5 -> ProjectImgStatus.DETAIL1;
+                            case 6 -> ProjectImgStatus.DETAIL2;
+                            case 7 -> ProjectImgStatus.DETAIL3;
+                            default -> ProjectImgStatus.ETC;
+                        };
+                    } else if (i == projectImgFiles.size() - 2) {
+                        imageType = ProjectImgStatus.ETC;
+                    } else {
+                        imageType = ProjectImgStatus.VIDEO;
+                    }
+                    imgDto.setImageType(imageType);
 
                     projectImgDtoList.add(imgDto);
                 } catch (IOException e) {

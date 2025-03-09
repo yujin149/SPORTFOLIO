@@ -204,6 +204,23 @@
                             <input type="file" name="projectImgFile" id="etcImg">
                         </div>
                     </li>
+                    <li class="list listImg">
+                        <p class="tit">ETC (동영상)</p>
+                        <div class="txtBox">
+                            <div th:if="${project != null}">
+                                <div th:each="img : ${project.projectImgList}"
+                                     th:if="${img.imageType.name() == 'VIDEO'}"
+                                     class="currentVideo">
+                                    <video controls style="max-width: 200px;">
+                                        <source th:src="${img.imgUrl}" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                    <input type="hidden" th:name="'existingImages[VIDEO]'" th:value="${img.imgName}">
+                                </div>
+                            </div>
+                            <input type="file" name="projectImgFile" id="videoFile" accept="video/mp4,video/webm">
+                        </div>
+                    </li>
                     <li class="list">
                         <p class="tit">사이트 주소</p>
                         <div class="txtBox">
@@ -310,12 +327,6 @@
             checkedCategories.forEach(checkbox => {
                 formData.append('categories', checkbox.value);
             });
-
-            // github와 notion 필드 처리
-            const github = document.querySelector('input[name="github"]').value;
-            const notion = document.querySelector('input[name="notion"]').value;
-            formData.set('github', github);
-            formData.set('notion', notion);
 
             // 폼 제출
             fetch(form.action, {
