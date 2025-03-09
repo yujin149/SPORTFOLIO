@@ -150,11 +150,18 @@ public class ProjectController {
                 .findFirst()
                 .orElse("");
 
+            String videoUrl = project.getProjectImgList().stream()
+                .filter(img -> img.getImageType() == ProjectImgStatus.VIDEO)
+                .map(ProjectImg::getImgUrl)
+                .findFirst()
+                .orElse("");
+
             model.addAttribute("project", project);
             model.addAttribute("isDevelopment", true);
             model.addAttribute("mainBannerUrl", mainBannerUrl);
             model.addAttribute("previewUrl", previewUrl);
             model.addAttribute("etcUrl", etcUrl);
+            model.addAttribute("videoUrl", videoUrl);
 
             return "/projects/detail_development";
         }

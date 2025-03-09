@@ -110,6 +110,7 @@ var(--gray-color); box-shadow: var(--box-shadow);}
 
 /*웹개발 페이지*/
 .detailWrap03  .detailInner{background:var(--bg-color); padding:6.25rem 0; margin-top:6.25rem;}
+.detailWrap03 .detailInner .imgWrap {width:1200px; margin:0 auto;}
 
 .detailWrap .btnWrap > div{display: flex; justify-content: flex-end; align-items: center;}
 .detailWrap .btnWrap > div{display: flex; justify-content: flex-end; align-items: center;}
