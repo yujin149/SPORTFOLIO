@@ -6,7 +6,7 @@
 [http://ujinweb.store/](http://ujinweb.store/)
 
 ### 포트폴리오 설명
-[sportfolio.pdf]([http://ujinweb.store/](https://drive.google.com/file/d/15Nul1Z_Bkm9xXMuoVl6qJc5C3H7hO91u/view?usp=drive_link))
+[sportfolio.pdf](https://drive.google.com/file/d/15Nul1Z_Bkm9xXMuoVl6qJc5C3H7hO91u/view?usp=drive_link)
 
 
 ## 🚀 주요 기능
